@@ -1,0 +1,102 @@
+label: Logistic Science
+description: '3x2 cells. Top: 222 pack machines in 3 mirrored row pairs (inserter | belt mixed belts). Bottom, turned
+  on their side: inserters (42), transport belts (12) and two gear blocks (24 + 12, bulk inserters) feeding them.
+  Inputs on the east edge, marked by panels: circuits 1 blue, iron 4 blue + 1 red.'
+icons:
+- type: item
+  name: logistic-science-pack
+status: built
+request:
+  product: logistic-science-pack
+  rate: 1 full blue belt
+  inputs: 'belt colour sized to need: yellow <= 15/s, red <= 30/s, blue <= 45/s'
+  makes_itself:
+  - inserter
+  - transport-belt
+  - iron-gear-wheel
+result:
+  footprint:
+    cells: 3x2
+    placement: not rotation-safe
+  inputs:
+  - item: iron-plate
+    belt: blue (45/s)
+    row: 54
+  - item: iron-plate
+    belt: red (22.5/s)
+    row: 88
+  - item: electronic-circuit
+    belt: blue (45/s)
+    row: 95
+  - item: iron-plate
+    belt: blue (45/s)
+    row: 96
+  - item: iron-plate
+    belt: blue (45/s)
+    row: 89
+  - item: iron-plate
+    belt: blue (45/s)
+    row: 90
+  outputs:
+  - item: logistic-science-pack
+    belts: 1 full blue (45/s), west edge, both lanes
+  machines:
+  - entity: assembling-machine-3
+    recipe: logistic-science-pack
+    count: 222
+  - entity: assembling-machine-3
+    recipe: inserter
+    count: 42
+  - entity: assembling-machine-3
+    recipe: transport-belt
+    count: 12
+  - entity: assembling-machine-3
+    recipe: iron-gear-wheel
+    count: 36
+  - entity: bulk-inserter
+    count: 72
+  - entity: display-panel
+    count: 7
+  - entity: express-splitter
+    count: 14
+  - entity: express-transport-belt
+    count: 2570
+  - entity: express-underground-belt
+    count: 36
+  - entity: fast-inserter
+    count: 576
+  - entity: fast-transport-belt
+    count: 28
+  - entity: fast-underground-belt
+    count: 2
+  - entity: long-handed-inserter
+    count: 42
+  - entity: medium-electric-pole
+    count: 372
+  - entity: small-lamp
+    count: 52
+  ratios: "pack: 1 inserter + 1 belt, 6 s; AM3 1.25 -> 0.208/s. 45/s needs 216; 222 built (46.3/s).\ninserter: circuit\
+    \ + gear + iron, 0.5 s. Limited by its inserters: fast picks circuit+gear (2 per craft) ->\n  1.15 crafts/s\
+    \ per machine; 42 built = 48.5/s for 45 needed. Lanes per pair 15/s.\nbelt: gear + iron -> 2, 0.5 s. 2 fast\
+    \ in + 2 fast out -> 2.31 crafts = 4.6 belts/s; 12 built = 55/s for 45.\n  One pair: gear and iron one lane\
+    \ each, exactly 22.5/s (= the need).\ngears: 2 iron -> 1, 0.5 s; bulk in/out (hand 2) -> 2.31/s per machine.\
+    \ 24 machines for the inserters (45/s from\n  2 iron belts), 12 for the belts (22.5/s from 1 iron belt).\niron:\
+    \ 90 + 45 (gears) + 45 (inserters) + 22.5 (belts) = 202.5/s = 4 blue + 1 red. Circuits 45/s = 1 blue."
+  bottleneck: 'inputs: every input belt is used exactly (output = 45/s)'
+  validators:
+  - 'collisions: none (4083 entities)'
+  - 'power: all powered, 372 poles in one network'
+  - 'belts: 110 curves, 21 sideloads, 15 dead ends, 19 underground pairs'
+  - 'power: 4 bridge poles join the bands'
+  - 'belts: 110 curves, 21 sideloads, 15 dead ends - all intended (formers, taps, collectors, route turns; row ends;
+    outputs)'
+  - 'flow: 312 machines each get all ingredients; 690 inserters move items their target uses; no item rides a belt
+    without a consumer or exit; exits carry only their product on both lanes; 14 mixed belts have the intended lanes'
+  - inputs all on the east edge, output on the west edge
+  - '3x2 cells: inside, no grid collision, grid link 2.1 (<= 9); not rotation-safe'
+check_in_game:
+- don't rotate it; align the 12 corner roboports
+- bulk inserters carry 2 (bulk inserter research) - gear blocks need it
+- 'belt-recipe pair: gear and iron lanes are exactly full (22.5/s each)'
+log:
+- '2026-11-19: built'

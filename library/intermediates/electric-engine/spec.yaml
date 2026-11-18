@@ -1,0 +1,42 @@
+label: "Electric Engines 45/s (4 cells)"
+description: |
+  Adapted from David's in-game design (electric-engine). Grid big poles and lamps removed (corner roboports
+  kept for alignment), pole wires rebuilt as a spanning tree, yellow belts -> blue, re-validated.
+icons: [{"name": "electric-engine-unit"}, {"name": "express-transport-belt"}]
+
+status: built
+
+request:
+  source: "David's Automation book (import/electric-engine.txt): \"copy, they are good, adapt to my constraints\""
+
+result:
+  footprint: {cells: "4x1"}
+  inputs:
+    - {item: engine-unit, belts: "1 full blue (right)"}
+    - {item: electronic-circuit, belts: "2 full blue (right)"}
+    - {fluid: lubricant, rate: "675/s, pipe (right)"}
+  outputs:
+    - {item: electric-engine-unit, belts: "1 full blue (left)"}
+  recipes:
+    - {recipe: electric-engine-unit, assemblers: 376}
+  machines:
+    - {entity: assembling-machine-3, count: 376}
+    - {entity: fast-inserter, count: 376}
+    - {entity: long-handed-inserter, count: 376}
+    - {entity: medium-electric-pole, count: 216}
+    - {entity: small-lamp, count: 184}
+    - {entity: roboport, count: 10}
+    - {entity: display-panel, count: 9}
+    - {entity: express-splitter, count: 5}
+    - {entity: express-underground-belt, count: 4}
+  ratios: |
+    electric-engine-unit 10 s -> 0.125/s per asm; 376 asm -> 47/s. 45/s needs 45 engines, 90 green, 675 lubricant/s.
+  bottleneck: "inputs exactly full at 45/s (engine 1 belt, green 2 belts)"
+  validators: {collisions: pass, grid: pass, power: "pass (grid big poles counted)", inserters: "pickup+drop present",
+               belts: pass, undergrounds: pass, fluids: pass}
+
+check_in_game:
+  - align the corner roboports on the existing ones; multi-cell, not rotation-safe
+  - poles reach the grid big poles by in-game auto-connect (blueprint cannot store wires to them)
+log:
+  - "2026-11-18: adapted from David's design"

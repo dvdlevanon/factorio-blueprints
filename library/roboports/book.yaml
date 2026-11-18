@@ -1,0 +1,8 @@
+label: "Roboports"
+description: "Roboport lattices (50-tile pitch) with big poles and lamps. Name = logistic coverage in tiles (W x H). Row 1: squares. Row 2: horizontal lines. Row 3: vertical lines (temporary corridors into a build site)."
+icons: [{type: item, name: roboport}]
+row_width: 6    # 6 sizes per row, one row per shape (David 2026-11-18)
+rows:           # each list starts a new row in the book
+  - [100x100, 150x150, 200x200, 250x250, 500x500, 1000x1000]
+  - [100x50, 150x50, 200x50, 250x50, 500x50, 1000x50]
+  - [50x100, 50x150, 50x200, 50x250, 50x500, 50x1000]

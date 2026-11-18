@@ -1,0 +1,44 @@
+label: "Engine Units 45/s (5x2 cells)"
+description: |
+  Adapted from David's in-game design (engine). Grid big poles and lamps removed (corner roboports
+  kept for alignment), pole wires rebuilt as a spanning tree, yellow belts -> blue, re-validated.
+icons: [{"name": "engine-unit"}, {"name": "express-transport-belt"}]
+
+status: built
+
+request:
+  source: "David's Automation book (import/engine.txt): \"copy, they are good, adapt to my constraints\""
+
+result:
+  footprint: {cells: "5x2"}
+  inputs:
+    - {item: iron-plate, belts: "4 full blue (right): gears 90/s + pipes 90/s"}
+    - {item: steel-plate, belts: "1 full blue (right)"}
+  outputs:
+    - {item: engine-unit, belts: "1 full blue (left)"}
+  recipes:
+    - {recipe: engine-unit, assemblers: 448}
+    - {recipe: iron-gear-wheel, assemblers: 24}
+    - {recipe: pipe, assemblers: 40}
+  machines:
+    - {entity: fast-inserter, count: 1136}
+    - {entity: assembling-machine-3, count: 512}
+    - {entity: long-handed-inserter, count: 464}
+    - {entity: medium-electric-pole, count: 444}
+    - {entity: small-lamp, count: 124}
+    - {entity: express-underground-belt, count: 20}
+    - {entity: roboport, count: 18}
+    - {entity: express-splitter, count: 7}
+    - {entity: display-panel, count: 7}
+  ratios: |
+    engine-unit 10 s -> 0.125/s per asm; 448 asm -> 56/s. Gears 24 asm x 2.5/s = 60/s (45 needed);
+    pipes 40 asm x 2.5/s = 100/s (90 needed). Inputs exact at 45/s: iron 180/s = 4 belts, steel 45/s = 1 belt.
+  bottleneck: "inputs (iron 4 belts, steel 1 belt) exactly full at 45/s"
+  validators: {collisions: pass, grid: pass, power: "pass (grid big poles counted)", inserters: "pickup+drop present",
+               belts: pass, undergrounds: pass, fluids: pass}
+
+check_in_game:
+  - align the corner roboports on the existing ones; multi-cell, not rotation-safe
+  - poles reach the grid big poles by in-game auto-connect (blueprint cannot store wires to them)
+log:
+  - "2026-11-18: adapted from David's design"

@@ -1,0 +1,49 @@
+label: "Explosives"
+description: |
+  4 modules of 24 chemical plants (2 mirrored rows of 12). Sulfur and coal merge onto one trunk (one lane
+  each); a splitter per module hands it to the module's input belt (long-handed for row A, fast for B).
+  Each module's output belt gets row A on the south lane, row B on the north lane; two collectors on the
+  left (top two modules, bottom two) sideload into the output belt, one lane each. One water network
+  (pipe rows between modules, linked by pipe-to-ground on the right). Includes the cell's 4 corner roboports.
+icons:
+  - {type: item, name: explosives}
+
+status: built
+
+request:
+  product: explosives
+  rate: 1 full blue belt (default)
+  footprint: {cells_max: 2, prefer: 1}
+  constraint_overrides: []
+
+result:
+  footprint: {cells: "1", tiles: "44x45 + 4 corner roboports", placement: "fills the cell; NOT rotation-safe (45 tall)"}
+  inputs:      # all from the right, top
+    - {item: sulfur, belts: "1 blue belt, 22.5/s used (half), top-right row 2"}
+    - {item: coal, belts: "1 blue belt, 22.5/s used (half), top-right row 1"}
+    - {fluid: water, rate: "225/s, inlet bottom right"}
+  outputs:
+    - {item: explosives, belts: "1 full blue (45/s), left, middle, both lanes"}
+  machines:
+    - {entity: chemical-plant, recipe: explosives, count: 96}
+    - {entity: fast-inserter, count: 96}
+    - {entity: long-handed-inserter, count: 96}
+    - {entity: express-splitter, count: 3}
+    - {entity: medium-electric-pole, count: 56}
+    - {entity: small-lamp, count: 24}
+    - {entity: display-panel, count: 4}
+    - {entity: roboport, count: 4, role: "cell corners, for alignment"}
+  ratios: |
+    recipe: 1 sulfur + 1 coal + 10 water -> 2 explosives in 4 s -> 0.5/s per plant. 45/s needs 90; 96 built (48/s).
+    The trunk carries sulfur and coal one lane each: both lanes exactly full at 45/s (22.5/s each).
+    Per plant: 0.25 sulfur + 0.25 coal in, 0.5 out.
+  bottleneck: "trunk lanes (exactly full) = output belt (full blue)"
+  validators: {collisions: pass, power: "pass (56 poles)", inserters: "pass (out inserters trace to the output; in inserters to a belt fed by both inputs)",
+               belts: "8 curves, 4 sideloads (trunk start, 2 collector joins, output merge), ends = output + 4 input-belt ends",
+               fluids: "1 network, every plant on both ports", grid: "1 cell, no grid collision, grid link 6.5"}
+
+check_in_game:
+  - "don't rotate it (45 tall, outside the rotation-safe square)"
+  - trunk start: sulfur lands on the east lane, coal on the west lane (two sideloads, no belt behind)
+log:
+  - "2026-11-18: built"

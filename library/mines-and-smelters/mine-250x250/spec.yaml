@@ -1,0 +1,70 @@
+label: Mine 250x250
+description: '4535 electric drills covering the whole 250x250 square, grid lines included: pairs of drill columns
+  (7 per cell) share one blue belt; 4 collector belts cross the mine and leave as 4 blue belts on adjacent rows
+  of the WEST edge, balanced by splitters. One pole lattice (power any pole), a lamp beside every pole and at the
+  output. Carries all 36 roboports of the grid; the grid big poles/lamps inside the square are replaced by the mine.'
+icons:
+- type: item
+  name: electric-mining-drill
+- type: item
+  name: express-transport-belt
+status: built
+request:
+  ask: '2026-11-19: 5 sizes of the same mine pattern, 50x50 .. 250x250; as many electric drills as possible without
+    underground belts (poles/belts arranged instead); any pole powers everything; lamps at edges, holes, near the
+    output; symmetric; small mines 2 blue belts out, big 4; splitters/balancers at the edge; all outputs on one
+    side, adjacent'
+  sizes: 50/100 = 2 belts (small), 150/200/250 = 4 belts (big) - my split, David to confirm
+  ask_2: '2026-11-19 (David): no holes at all - fit the roboport grid, drills may sit on the grid lines as long
+    as the roboports are in the blueprint; keep the design, cover the whole area'
+result:
+  footprint:
+    cells: 5x5
+    tiles: 250x250 (roboport centre to roboport centre)
+  inputs: []
+  outputs:
+  - item: ore of the patch (iron, copper, coal, stone)
+    belts: 4 blue, WEST edge, adjacent rows (y 116, 117, 118, 119 from the top-left roboport)
+    fill: 100% at base mining speed
+  machines:
+  - entity: electric-mining-drill
+    count: 4535
+  - entity: express-splitter
+    count: 4
+  - entity: express-transport-belt
+    count: 9629
+  - entity: express-underground-belt
+    count: 2
+  - entity: medium-electric-pole
+    count: 1052
+  - entity: roboport
+    count: 36
+  - entity: small-lamp
+    count: 1052
+  bottleneck: 'output belts: drills make 2268/s = 50.4 blue belts, 4 belts leave'
+  coverage: every tile in reach of a drill except 90 at the west edge (around the output balancer and next to the
+    edge roboports where the collector verticals run)
+  validators:
+  - 'collisions: none (16310 entities)'
+  - 'power: every drill, lamp and roboport covered; 1052 poles wired as ONE network (spanning tree, reach 9)'
+  - 'belts: 10 curves, 138 sideloads, 4 dead ends, 1 underground pairs'
+  - 'belts: curves = the 10 merge turns; sideloads = pair belts onto collectors only; dead ends = the 4 output tiles;
+    one underground pair (balancer crossing)'
+  - 'balancer: each of the 4 collectors sends exactly 1/4 to every output (splitter graph traced)'
+  - 'drills: all 4535 drop on a belt that reaches an output, and every drill sends exactly 1/4 of its ore to each
+    output (no drill drops after the balancer)'
+  - 'grid: all 36 roboports of the lattice included (edges and inside); drills, belts, poles fill everything else,
+    grid lines included (the grid big poles/lamps inside are replaced)'
+  - 'coverage: every tile from the edge roboports inward is in reach of a drill (x, y 2..247, 60260 tiles) except
+    90 tiles at the west edge (under the output splitters / beside the edge roboports where the collector verticals
+    run)'
+  - 'ratio: 4535 drills x 0.5/s = 2268 ore/s = 50.4 blue belts (base, no mining productivity) -> 4 output belts
+    (180/s)'
+check_in_game:
+- remove the grid's big poles and lamps inside the square before placing (the mine replaces them)
+- connect one pole to power; the roboports draw from the mine's poles
+- edge drills reach 1 tile past the square; adjacent mines don't collide (nothing on the edge lines but roboports)
+log:
+- '2026-11-19: built'
+- '2026-11-19: 4-belt merge -> real 4-4 balancer (David: some undergrounds are fine)'
+- '2026-11-19: rebuilt to cover the whole area (David), roboport lattice included'

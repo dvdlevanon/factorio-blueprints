@@ -1,0 +1,100 @@
+label: Space Science (1 silo)
+description: 'One rocket silo, ~2.9 space science/s (1000 per launch); place ~15 for a full belt. 2x1 cells. Makes
+  its own rocket fuel (40 assemblers, light oil by pipe) and satellites. Inputs on the east edge, marked by panels:
+  processing units, LDS, solar panels, accumulators, radars (yellow), solid fuel (blue), light oil (pipe).'
+icons:
+- type: item
+  name: space-science-pack
+- type: item
+  name: rocket-silo
+status: built
+request:
+  product: space-science-pack
+  rate: 1 full blue belt
+  inputs: 'belt colour sized to need: yellow <= 15/s, red <= 30/s, blue <= 45/s'
+  makes_itself:
+  - rocket-part
+  - rocket-fuel
+  - satellite
+result:
+  footprint:
+    cells: 2x1
+    placement: not rotation-safe
+  inputs:
+  - item: processing-unit
+    belt: yellow (3.3/s)
+    row: 24
+  - item: low-density-structure
+    belt: yellow (3.3/s)
+    row: 28
+  - item: solar-panel
+    belt: yellow (0.3/s)
+    row: 18
+  - item: radar
+    belt: yellow (0.015/s)
+    row: 21
+  - item: accumulator
+    belt: yellow (0.3/s)
+    row: 17
+  - item: solid-fuel
+    belt: blue (30.4/s)
+    row: 36
+  outputs:
+  - item: space-science-pack
+    belts: 1 full blue (45/s), west edge, both lanes
+  machines:
+  - entity: assembling-machine-3
+    recipe: satellite
+    count: 1
+  - entity: assembling-machine-3
+    recipe: rocket-fuel
+    count: 40
+  - entity: display-panel
+    count: 8
+  - entity: express-transport-belt
+    count: 189
+  - entity: express-underground-belt
+    count: 2
+  - entity: fast-inserter
+    count: 50
+  - entity: long-handed-inserter
+    count: 45
+  - entity: medium-electric-pole
+    count: 28
+  - entity: pipe
+    count: 43
+  - entity: pipe-to-ground
+    count: 84
+  - entity: rocket-silo
+    count: 1
+  - entity: small-lamp
+    count: 5
+  - entity: transport-belt
+    count: 352
+  - entity: underground-belt
+    count: 10
+  ratios: "\\\nRate: one silo (David: \"do what makes sense\"; 45/s would be 15 silos and ~570 rocket fuel assemblers).\n\
+    rocket: 100 parts x 3 s (silo speed 1) = 300 s + launch (~30-45 s, not verified offline) -> ~2.9 packs/s.\n\
+    per rocket: 1000 PU, 1000 LDS, 1000 rocket fuel (+ satellite: 100 LDS, 100 PU, 50 fuel, 100 solar, 100 accumulators,\n\
+    \  5 radars). Averaged: PU and LDS ~3.2/s, fuel ~3.05/s, solar and accumulators ~0.3/s.\nwhile building parts\
+    \ the silo takes 3.33/s of each: 4 fast (PU | LDS) + 3 long-handed (fuel, 3.6/s).\nrocket fuel: 10 solid fuel\
+    \ + 10 light oil, 15 s -> 0.083/s per AM3; 40 built = 3.33/s. Solid fuel 30.4/s, oil 30.4/s."
+  bottleneck: the silo (crafting + launch time)
+  validators:
+  - 'collisions: none (858 entities)'
+  - 'power: all powered, 28 poles in one network'
+  - 'belts: 9 curves, 2 sideloads, 6 dead ends, 6 underground pairs'
+  - 'power: 1 bridge poles'
+  - 'belts: 9 curves, 2 sideloads, 6 dead ends - all intended'
+  - 'fluids: one light-oil network, all 40 rocket fuel machines on it'
+  - 'flow: 42 machines each get all ingredients; 95 inserters move items their target uses; no item rides a belt
+    without a consumer or exit; exits carry only their product on both lanes; 0 mixed belts have the intended lanes'
+  - '2x1 cells: inside, no grid collision, grid link 7.9 (<= 9); not rotation-safe'
+check_in_game:
+- don't rotate it; align the 6 corner roboports
+- satellites launch by themselves (send_to_orbit_mode = automated in 2.1 data)
+- the 1000 packs land in the silo output and the 3 west inserters take them out
+- inserters work on the silo south side and on its west side
+- output belt carries one lane (~2.9/s average, bursts of 1000)
+log:
+- '2026-11-19: built (one silo)'

@@ -1,0 +1,140 @@
+label: Production Science 15/s
+description: '15/s (1/3 belt) - place 3 for a full belt. 4x2 cells. Top left: 88 pack machines in 2 row pairs (rails
+  on the outer belts, furnace | module in the middle). Middle: two rail blocks (32 machines each, 4 one-lane rail
+  belts each, laid as nested L-shapes). Right: stick blocks (10, bulk) and furnace blocks (12). Bottom left: module
+  block (64). Inputs on the east edge, marked by panels.'
+icons:
+- type: item
+  name: production-science-pack
+status: built
+request:
+  product: production-science-pack
+  rate: 1 full blue belt
+  inputs: 'belt colour sized to need: yellow <= 15/s, red <= 30/s, blue <= 45/s'
+  makes_itself:
+  - rail
+  - iron-stick
+  - electric-furnace
+  - productivity-module
+result:
+  footprint:
+    cells: 4x2
+    placement: not rotation-safe
+  inputs:
+  - item: stone
+    belt: blue (37.5/s)
+    row: 2
+  - item: steel-plate
+    belt: blue (37.5/s)
+    row: 3
+  - item: stone
+    belt: blue (37.5/s)
+    row: 52
+  - item: steel-plate
+    belt: blue (37.5/s)
+    row: 53
+  - item: iron-plate
+    belt: red (18.75/s)
+    row: 6
+  - item: iron-plate
+    belt: red (18.75/s)
+    row: 56
+  - item: steel-plate
+    belt: red (25/s)
+    row: 24
+  - item: stone-brick
+    belt: red (25/s)
+    row: 25
+  - item: advanced-circuit
+    belt: yellow (12.5/s)
+    row: 26
+  - item: steel-plate
+    belt: red (25/s)
+    row: 74
+  - item: stone-brick
+    belt: red (25/s)
+    row: 75
+  - item: advanced-circuit
+    belt: yellow (12.5/s)
+    row: 76
+  - item: advanced-circuit
+    belt: red (25/s)
+    row: 96
+  - item: electronic-circuit
+    belt: red (25/s)
+    row: 97
+  outputs:
+  - item: production-science-pack
+    belts: 1 full blue (45/s), west edge, both lanes
+  machines:
+  - entity: assembling-machine-3
+    recipe: production-science-pack
+    count: 88
+  - entity: assembling-machine-3
+    recipe: rail
+    count: 64
+  - entity: assembling-machine-3
+    recipe: iron-stick
+    count: 20
+  - entity: assembling-machine-3
+    recipe: electric-furnace
+    count: 24
+  - entity: assembling-machine-3
+    recipe: productivity-module
+    count: 64
+  - entity: bulk-inserter
+    count: 192
+  - entity: display-panel
+    count: 15
+  - entity: express-splitter
+    count: 26
+  - entity: express-transport-belt
+    count: 3498
+  - entity: express-underground-belt
+    count: 86
+  - entity: fast-inserter
+    count: 328
+  - entity: fast-transport-belt
+    count: 372
+  - entity: fast-underground-belt
+    count: 16
+  - entity: long-handed-inserter
+    count: 240
+  - entity: medium-electric-pole
+    count: 335
+  - entity: small-lamp
+    count: 44
+  - entity: transport-belt
+    count: 6
+  - entity: underground-belt
+    count: 4
+  ratios: "Rate: 15/s, not a full belt (David: \"do what makes sense\" - 45/s would be ~770 machines and ~30 inputs).\
+    \ 3 copies = 45/s.\npack: 1 furnace + 1 module + 30 rails -> 3 packs, 21 s; AM3 -> 0.0595 crafts/s. 5 crafts/s\
+    \ needs 84; 88 built.\n  Per pair: 75 rails/s on four one-lane feeds (18.75 each), furnace 2.5/s, module 2.5/s.\n\
+    rails: stone + stick + steel -> 2, 0.5 s. Bulk picks stone | steel, long-handed picks sticks (1.2/s) -> 1.2\
+    \ crafts/s\n  per machine. Each rail block: 2 pairs x 2 rows x 8 = 32 machines; rows need 9.4 crafts/s, 8 machines\
+    \ give 9.6 (2% spare).\n  Each block: stone 37.5, steel 37.5, sticks 37.5 -> 75 rails/s on 4 one-lane belts\
+    \ (own output rows per pair).\nsticks: iron -> 2, 0.5 s; bulk in/out -> 4.6/s per machine; 10 per block = 46\
+    \ for 37.5 (iron 18.75).\nfurnaces: 10 steel + 5 red + 10 bricks, 5 s. Bulk picks steel | bricks (20/craft)\
+    \ -> 0.23/s per machine; 12 per block\n  (2.8/s) for 2.5/s. Two blocks join onto one belt (5/s).\nmodules: 5\
+    \ red + 5 green, 15 s -> 0.083/s; 64 machines (5.3/s) for 5/s.\ninputs: stone 2 x 37.5, steel 2 x 37.5 + 2 x\
+    \ 25, iron 2 x 18.75, bricks 2 x 25, red circuits 2 x 12.5 + 25, green 25."
+  bottleneck: rail machines (2% spare, long-handed stick inserters)
+  validators:
+  - 'collisions: none (5422 entities)'
+  - 'power: all powered, 335 poles in one network'
+  - 'belts: 203 curves, 31 sideloads, 31 dead ends, 53 underground pairs'
+  - 'power: 15 bridge poles join the bands'
+  - 'belts: 203 curves, 31 sideloads, 31 dead ends - all intended (formers, taps, collectors, route turns; row ends;
+    outputs)'
+  - 'flow: 260 machines each get all ingredients; 760 inserters move items their target uses; no item rides a belt
+    without a consumer or exit; exits carry only their product on both lanes; 30 mixed belts have the intended lanes'
+  - inputs all on the east edge, output on the west edge
+  - '4x2 cells: inside, no grid collision, grid link 2.1 (<= 9); not rotation-safe'
+check_in_game:
+- don't rotate it; align the 15 corner roboports
+- 'rail machines: long-handed inserters must keep up (1.2 sticks/s each); 2% spare'
+- bulk inserters carry 2 (bulk inserter research)
+- output belt carries 15/s (blue belt, one third full)
+log:
+- '2026-11-19: built at 15/s'

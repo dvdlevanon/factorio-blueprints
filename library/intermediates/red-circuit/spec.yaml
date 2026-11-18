@@ -1,0 +1,48 @@
+label: "Red Circuits 45/s (5 cells)"
+description: |
+  Adapted from David's in-game design (red-circuit). Grid big poles and lamps removed (corner roboports
+  kept for alignment), pole wires rebuilt as a spanning tree, yellow belts -> blue, re-validated.
+icons: [{"name": "advanced-circuit"}, {"name": "express-transport-belt"}]
+
+status: built
+
+request:
+  source: "David's Automation book (import/red-circuit.txt): \"copy, they are good, adapt to my constraints\""
+
+result:
+  footprint: {cells: "5x1"}
+  inputs:
+    - {item: electronic-circuit, belts: "2 panels (right)"}
+    - {item: plastic-bar, belts: "2 panels (right)"}
+    - {item: copper-plate, belts: "2 panels (right), cable made inside"}
+  outputs:
+    - {item: advanced-circuit, belts: "left (2 panels)"}
+  recipes:
+    - {recipe: advanced-circuit, assemblers: 224}
+    - {recipe: copper-cable, assemblers: 44}
+  machines:
+    - {entity: fast-inserter, count: 624}
+    - {entity: long-handed-inserter, count: 448}
+    - {entity: assembling-machine-3, count: 268}
+    - {entity: medium-electric-pole, count: 249}
+    - {entity: small-lamp, count: 85}
+    - {entity: express-underground-belt, count: 20}
+    - {entity: roboport, count: 12}
+    - {entity: display-panel, count: 8}
+    - {entity: express-splitter, count: 2}
+  ratios: |
+    advanced-circuit 6 s, AM3 1.25 -> 0.208/s per asm; 224 asm -> 46.7/s. Each of the 4 red rows needs 45 cable/s
+    (a full belt). Original: 6 cable asms per cable belt, all on one side -> cable on one lane only = 22.5/s per
+    belt -> 22.5/s red. Fix: +5 cable asms per belt (20 total, ~23/s each block) sideloaded onto the empty lane.
+    Now 44 cable asms; each cable belt carries 45/s (both lanes) -> 45/s red. Copper 90/s = 2 belts (exact).
+  bottleneck: "inputs exact at 45/s: green 2 belts, plastic 2 belts, copper 2 belts; cable belts full"
+  validators: {collisions: pass, grid: pass, power: "pass (grid big poles counted)", inserters: "pickup+drop present",
+               belts: pass, undergrounds: pass, fluids: pass}
+
+check_in_game:
+  - align the corner roboports on the existing ones; multi-cell, not rotation-safe
+  - poles reach the grid big poles by in-game auto-connect (blueprint cannot store wires to them)
+  - each cable belt full on both lanes at the red rows (new blocks sideload the second lane)
+log:
+  - "2026-11-18: adapted from David's design"
+  - "2026-11-18: +20 cable asms (4 blocks) filling the empty lane of each cable belt; was capped at 22.5/s"

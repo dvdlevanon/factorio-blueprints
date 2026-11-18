@@ -1,0 +1,28 @@
+label: "Mall + feeder"
+description: |
+  David's all-in-one mall, unchanged except: shifted onto the grid at the only collision-free offset and
+  24 corner roboports added (7x2 cells). 155 assemblers (131 AM2 + 24 AM3),
+  1 oil refinery + 8 chemical plants, outputs into storage chests. Inputs on the left: plates, coal, stone,
+  brick, iron ore, crude oil, water. Not made for scale.
+icons:
+  - {type: item, name: assembling-machine-2}
+  - {type: item, name: express-transport-belt}
+
+status: imported
+
+request:
+  source: "import/mall-all-in-one.txt (David, 2026-11-18)"
+  note: "keep it as it is (David declined the redesign) - only the roboports added (David 2026-11-18)"
+
+result:
+  footprint: {tiles: "350x88", cells: "7x2 (mall x 48..397, y 2..89 from the top-left roboport)", roboports: "24 corner roboports"}
+  grid: "0 tiles on grid roboports / big poles / lamps (offset (22,31) mod 50, the only collision-free one)"
+  validators: "not run (as is)"
+  note: "vanilla entities only"
+
+check_in_game:
+  - "align the roboports on the existing grid; the left input belts sit on the grid line (x 48-49)"
+  - "power: the mall's own medium poles must reach your grid (not checked)"
+log:
+  - "2026-11-18: imported as is"
+  - "2026-11-18: grid offset + 24 corner roboports"

@@ -1,0 +1,35 @@
+label: "Oil Megablock (roboport grid)"
+description: |
+  David's own design, added as is (no adaptation, no re-validation). From its description: 64 refineries,
+  504 tanks (168 each petroleum / light oil / lubricant). Inputs left, outputs right. Pipe-icon panels =
+  manual plug spots.
+icons:
+  - {type: fluid, name: crude-oil}
+  - {type: item, name: oil-refinery}
+  - {type: fluid, name: lubricant}
+  - {type: fluid, name: petroleum-gas}
+
+status: imported
+
+request:
+  source: "import/oil-megapack.txt (pasted by David 2026-11-18)"
+  note: "add it as it is - the hard constraints (inputs right, corner roboports, blue belts...) are NOT applied"
+
+result:
+  footprint: {tiles: "344x96 (7 cells x 2)", roboports: "none in the blueprint"}
+  machines:
+    - {entity: oil-refinery, recipe: advanced-oil-processing, count: 64}
+    - {entity: chemical-plant, recipe: light-oil-cracking, count: 52}
+    - {entity: chemical-plant, recipe: lubricant, count: 32}
+    - {entity: chemical-plant, recipe: solid-fuel-from-petroleum-gas, count: 26}
+    - {entity: chemical-plant, recipe: solid-fuel-from-light-oil, count: 26}
+    - {entity: chemical-plant, recipe: heavy-oil-cracking, count: 16}
+    - {entity: storage-tank, count: 504}
+    - {entity: pump, count: 20}
+    - {entity: fast-inserter, count: 52}
+  validators: "not run (as is)"
+  note: "vanilla entities only (checked)"
+
+check_in_game: []
+log:
+  - "2026-11-18: imported as is"

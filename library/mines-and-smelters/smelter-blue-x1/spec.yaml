@@ -1,0 +1,47 @@
+label: "Smelter blue x1"
+description: |
+  1 blue belt(s) of ore in from the EAST, 1 blue belt(s) of plates out on the WEST, all straight rows, no turns.
+  Per belt: 2 rows of 42 electric furnaces around the ore belt + plate belt (fast + long-handed inserters).
+  Iron or copper (the furnace picks the recipe); stone works but gives half as many bricks.
+icons:
+  - {type: item, name: electric-furnace}
+  - {type: item, name: express-transport-belt}
+
+status: built
+
+request:
+  ask: "2026-11-19: simple smelters, ore from one side, plates the other; yellow/red/blue belt versions (ore in on that
+    color, plates out on that color); horizontal, no turns; single, double and triple per cell height; max 1 cell tall,
+    any width"
+  choices: "electric furnaces (no fuel belt); ~17% spare furnaces (CLAUDE.md: no exact 100% ratios)"
+  constraint_overrides:
+    - "blue belts (not blue)" 
+    - no display panels (ore type depends on use)
+
+result:
+  footprint: {cells: "3x1", tiles: "144x10"}
+  inputs:
+    - {item: "iron or copper ore", belts: "1 x blue (45/s each), EAST edge", rows: "ore 24 -> plates 25"}
+  outputs:
+    - {item: "plates", belts: "1 x blue, full, WEST edge"}
+  machines:
+    - {entity: electric-furnace, count: 84}
+    - {entity: fast-inserter, count: 84}
+    - {entity: long-handed-inserter, count: 84}
+    - {entity: medium-electric-pole, count: 48}
+    - {entity: small-lamp, count: 36}
+    - {entity: roboport, count: 8, role: "cell corners, for alignment"}
+  bottleneck: "output belt (84 furnaces x 0.625/s = 52.5/s per belt vs 45/s)"
+  validators:
+    - "collisions: none (624 entities)"
+    - "power: all powered, 48 poles in one network"
+    - "inserters: every pickup/drop target as expected"
+    - "belts: 0 curves, 0 sideloads, 2 dead ends, 0 underground pairs"
+    - "belts: straight rows only; dead ends = ore row ends + plate outputs (west edge)"
+    - "3x1 cells: inside, no grid collision, grid link 1.6 (<= 9); not rotation-safe"
+    - "ratio: 84 furnaces per belt x 0.625/s = 52.5 plates/s for a blue belt (45/s, 117%); ore in = plates out (iron, copper)"
+
+check_in_game:
+  - long-handed inserters (~1.2/s) keep up: each furnace needs only 0.54/s at full belt
+log:
+  - "2026-11-19: built"

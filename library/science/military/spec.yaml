@@ -1,0 +1,151 @@
+label: Military Science
+description: '4x3 cells. Top: 192 pack machines (wall | grenade, piercing belts). Walls (42, bulk) top right, grenades
+  (150) middle right, magazines (20, bulk) bottom right, piercing rounds (60) middle left. Inputs on the east edge,
+  marked by panels: bricks 6, coal 6, iron 5 blue belts; copper red, steel yellow.'
+icons:
+- type: item
+  name: military-science-pack
+status: built
+request:
+  product: military-science-pack
+  rate: 1 full blue belt
+  inputs: 'belt colour sized to need: yellow <= 15/s, red <= 30/s, blue <= 45/s'
+  makes_itself:
+  - piercing-rounds-magazine
+  - firearm-magazine
+  - grenade
+  - stone-wall
+result:
+  footprint:
+    cells: 4x3
+    placement: not rotation-safe
+  inputs:
+  - item: copper-plate
+    belt: red (22.5/s)
+    row: 119
+  - item: steel-plate
+    belt: yellow (11.25/s)
+    row: 120
+  - item: iron-plate
+    belt: blue (45/s)
+    row: 105
+  - item: iron-plate
+    belt: blue (45/s)
+    row: 107
+  - item: coal
+    belt: blue (37.5/s)
+    row: 56
+  - item: iron-plate
+    belt: blue (37.5/s)
+    row: 58
+  - item: coal
+    belt: blue (37.5/s)
+    row: 60
+  - item: stone-brick
+    belt: blue (37.5/s)
+    row: 4
+  - item: stone-brick
+    belt: blue (37.5/s)
+    row: 6
+  - item: coal
+    belt: blue (37.5/s)
+    row: 70
+  - item: iron-plate
+    belt: blue (37.5/s)
+    row: 72
+  - item: coal
+    belt: blue (37.5/s)
+    row: 74
+  - item: stone-brick
+    belt: blue (37.5/s)
+    row: 17
+  - item: stone-brick
+    belt: blue (37.5/s)
+    row: 19
+  - item: coal
+    belt: blue (37.5/s)
+    row: 84
+  - item: iron-plate
+    belt: blue (37.5/s)
+    row: 86
+  - item: coal
+    belt: blue (37.5/s)
+    row: 88
+  - item: stone-brick
+    belt: blue (37.5/s)
+    row: 30
+  - item: stone-brick
+    belt: blue (37.5/s)
+    row: 32
+  outputs:
+  - item: military-science-pack
+    belts: 1 full blue (45/s), west edge, both lanes
+  machines:
+  - entity: assembling-machine-3
+    recipe: military-science-pack
+    count: 192
+  - entity: assembling-machine-3
+    recipe: stone-wall
+    count: 42
+  - entity: assembling-machine-3
+    recipe: grenade
+    count: 150
+  - entity: assembling-machine-3
+    recipe: piercing-rounds-magazine
+    count: 60
+  - entity: assembling-machine-3
+    recipe: firearm-magazine
+    count: 20
+  - entity: bulk-inserter
+    count: 124
+  - entity: display-panel
+    count: 20
+  - entity: express-splitter
+    count: 9
+  - entity: express-transport-belt
+    count: 3930
+  - entity: express-underground-belt
+    count: 54
+  - entity: fast-inserter
+    count: 804
+  - entity: fast-transport-belt
+    count: 194
+  - entity: fast-underground-belt
+    count: 2
+  - entity: long-handed-inserter
+    count: 464
+  - entity: medium-electric-pole
+    count: 524
+  - entity: small-lamp
+    count: 88
+  - entity: transport-belt
+    count: 194
+  - entity: underground-belt
+    count: 2
+  ratios: "pack: 1 piercing + 1 grenade + 2 walls -> 2 packs, 10 s; AM3 -> 0.25/s. 45/s needs 180; 192 built (48/s).\n\
+    \  Per 45 packs/s: 22.5 piercing, 22.5 grenades, 45 walls.\nwalls: 5 bricks, 0.5 s. Bulk (hand 2) near + long-handed\
+    \ far -> 5.8 bricks/s = 1.16 walls/s per machine.\n  3 pairs x 14 = 42 machines (49/s). Each pair: two brick\
+    \ belts of 37.5/s (middle belts, both lanes) -> 15 walls/s.\ngrenades: 5 iron + 10 coal, 8 s -> 0.156/s. Three\
+    \ middle belts per pair (coal | iron | coal), 50 machines per\n  pair -> 7.8/s for 7.5 needed (coal 2 x 37.5,\
+    \ iron 37.5 per pair). 150 machines, 22.5/s.\nmagazines: 4 iron, 1 s -> 1.25/s (crafting-limited). 20 machines\
+    \ (25/s) for 22.5; 2 iron belts of 45/s.\npiercing: 2 magazines + 1 steel + 2 copper -> 2, 6 s -> 0.42/s. 60\
+    \ machines (25/s) for 22.5.\ninputs: bricks 225/s (6 x 37.5), coal 225/s (6 x 37.5), iron 112.5 (3 x 37.5) +\
+    \ 90 (2 x 45), copper 22.5, steel 11.25."
+  bottleneck: 'inputs: every input is used exactly (output = 45/s)'
+  validators:
+  - 'collisions: none (6873 entities)'
+  - 'power: all powered, 524 poles in one network'
+  - 'belts: 152 curves, 17 sideloads, 28 dead ends, 29 underground pairs'
+  - 'power: 4 bridge poles join the bands'
+  - 'belts: 152 curves, 17 sideloads, 28 dead ends - all intended (formers, taps, collectors, route turns; row ends;
+    outputs)'
+  - 'flow: 464 machines each get all ingredients; 1392 inserters move items their target uses; no item rides a belt
+    without a consumer or exit; exits carry only their product on both lanes; 27 mixed belts have the intended lanes'
+  - inputs all on the east edge, output on the west edge
+  - '4x3 cells: inside, no grid collision, grid link 2.1 (<= 9); not rotation-safe'
+check_in_game:
+- don't rotate it; align the 20 corner roboports
+- 'bulk inserters carry 2 (bulk inserter research): walls and magazines'
+- 'walls: 15 walls/s per pair needs 75 bricks/s; machines cap 81/s (8% spare)'
+log:
+- '2026-11-19: built'

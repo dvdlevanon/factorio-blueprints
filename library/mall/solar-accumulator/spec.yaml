@@ -1,0 +1,54 @@
+label: "Mall - Solar + Accumulators"
+description: |
+  One block for solar panels and accumulators, ~105/min each, both leaving on belts on the left.
+  1 cell wide x 2 tall. Top cell: 14 solar machines and 14 accumulator machines in two mirrored pairs.
+  Bottom cell: 9 sulfur -> 6 sulfuric acid -> 36 battery chemical plants; the battery belt rises up the
+  left side into the accumulator pair. Includes the 6 corner roboports.
+icons:
+  - {type: item, name: solar-panel}
+  - {type: item, name: accumulator}
+
+status: built
+
+request:
+  source: "import/mall-solar.txt + import/mall-accumulator.txt (David, 2026-11-18)"
+  ask: "unify solar and accumulators into a single blueprint, add roboports, optimise size; outputs leave on belts (no buffers)"
+
+result:
+  footprint: {cells: "1x2 (vertical)", tiles: "42x92 inside the 2 cells", placement: "not rotation-safe"}
+  inputs:      # all from the right; belt colour = need
+    - {item: steel-plate, belts: "yellow, 8.75/s (top cell row 10)"}
+    - {item: copper-plate, belts: "yellow, 8.75/s (top cell row 11, solar)"}
+    - {item: electronic-circuit, belts: "red, 26.25/s (top cell row 15)"}
+    - {item: iron-plate, belts: "yellow, 3.5/s (top cell row 35, accumulators)"}
+    - {fluid: petroleum-gas, rate: "270/s (bottom cell, top pipe)"}
+    - {fluid: water, rate: "~620/s (bottom cell, 2nd pipe)"}
+    - {item: iron-plate, belts: "yellow, 3.5/s (bottom cell, acid)"}
+    - {item: copper-plate, belts: "yellow, 9/s (bottom cell, batteries)"}
+    - {item: iron-plate, belts: "yellow, 9/s (bottom cell, batteries)"}
+  outputs:
+    - {item: solar-panel, belts: "~1.75/s, left (top cell row 18)"}
+    - {item: accumulator, belts: "~1.75/s, left (top cell row 42)"}
+  machines:
+    - {entity: assembling-machine-3, recipe: solar-panel, count: 14}
+    - {entity: assembling-machine-3, recipe: accumulator, count: 14}
+    - {entity: chemical-plant, recipe: sulfur, count: 9}
+    - {entity: chemical-plant, recipe: sulfuric-acid, count: 6}
+    - {entity: chemical-plant, recipe: battery, count: 36}
+    - {entity: roboport, count: 6, role: "cell corners"}
+  ratios: |
+    solar panel (2.1): 5 steel + 15 green + 5 copper, 10 s -> 0.125/s per AM3; 14 -> 1.75/s (105/min).
+    accumulator: 2 iron + 5 battery, 10 s -> 14 -> 1.75/s; needs 8.75 batteries/s.
+    battery 4 s -> 0.25/s per plant; 36 -> 9/s. acid 175/s used: 6 plants (300/s max), one bulk inserter
+    each (~3.5 items/s needed). sulfur 17.5/s: 9 plants (18/s), on one lane of the feed belt.
+    Solar: bulk inserter takes green + steel (or green + copper) from the near belt, long-handed the
+    other ingredient from the far belt; green 13.1/s per lane.
+  validators: {collisions: pass, power: "pass (64 poles, one network)", grid: "1x2 cells, no grid collision, grid link 5.7",
+               inserters: "pass (every machine reaches all its ingredients; products reach their outputs)",
+               belts: "19 intended curves, 8 sideloads (3 merges, 5 formers), 8 ends", fluids: "3 networks, every port on the right one"}
+
+check_in_game:
+  - "sulfur plants: water in the left port, petroleum in the right (recipe order) - swap the two inlets if reversed"
+  - bulk inserters carry 2 (bulk-inserter research)
+log:
+  - "2026-11-18: built (replaces the separate solar and accumulator designs)"

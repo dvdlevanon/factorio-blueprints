@@ -1,0 +1,7 @@
+# A directory with book.yaml is a blueprint book. Subdirectories are its contents:
+# a subdir with book.yaml is a nested book, a subdir with spec.yaml is a blueprint.
+label: "Mines & Smelters"
+description: "Mines 50x50 .. 250x250; smelters yellow/red/blue x1..x3."
+icons: [{type: item, name: electric-mining-drill}]
+order: [mine-50x50, mine-100x100, mine-150x150, mine-200x200, mine-250x250,
+        smelter-yellow-x1, smelter-yellow-x2, smelter-yellow-x3, smelter-red-x1, smelter-red-x2, smelter-red-x3, smelter-blue-x1, smelter-blue-x2, smelter-blue-x3]

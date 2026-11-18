@@ -1,0 +1,55 @@
+label: "Plastic"
+description: |
+  3 stacked modules, each 24 chemical plants in two mirrored rows of 12 around a shared coal belt.
+  Each row puts plastic on its own belt (one lane); at the west end the two belts sideload into the
+  module's output belt (both lanes). Petroleum rows run between modules (shared by the plants above and
+  below). Coal: 2 blue belts, each into a splitter; one output feeds its own module, the other joins
+  the middle module's coal belt (fed from both sides). Includes the cell's 4 corner roboports.
+icons:
+  - {type: item, name: plastic-bar}
+
+status: built
+
+request:
+  product: plastic-bar
+  rate: 3 blue belts      # 2026-11-18: "the cell is almost empty, put 2-3 copies; ok with 3 blue belts"
+  footprint: {cells_max: 2, prefer: 1}
+  inputs_offered:
+    - {item: coal, form: "belt sized to need"}
+    - {fluid: petroleum-gas, form: pipe}
+  constraint_overrides: []
+
+result:
+  footprint: {cells: "1", tiles: "42x37 + 4 corner roboports (54x54)", placement: "centered in the cell"}
+  inputs:      # all from the right
+    - {item: coal, belts: "2 blue belts (uses 67.5/s = 1.5 belts), top and bottom, split into the 3 modules"}
+    - {fluid: petroleum-gas, rate: "2 pipe entrances (top and bottom row), 1350/s total; all one network"}
+  outputs:
+    - {item: plastic-bar, belts: "3 full blue (135/s), side: left, both lanes"}
+  machines:
+    - {entity: chemical-plant, recipe: plastic-bar, count: 72}
+    - {entity: fast-inserter, count: 72, role: "plant -> plastic belt"}
+    - {entity: long-handed-inserter, count: 72, role: "coal belt -> plant"}
+    - {entity: medium-electric-pole, count: 42}
+    - {entity: small-lamp, count: 18}
+    - {entity: express-splitter, count: 2}
+    - {entity: display-panel, count: 7}
+    - {entity: roboport, count: 4, role: "cell corners, for alignment"}
+  ratios: |
+    recipe: 1 coal + 20 petroleum -> 2 plastic in 1 s; chemical plant speed 1 -> 2 plastic/s per plant.
+    One belt (45/s) needs 22.5 plants; 24 per module (48/s max, the output belt is the cap).
+    Per plant at 45/s: 1.875 plastic/s out (fast inserter ~2.3/s), 0.94 coal/s in (long-handed ~1.2/s).
+    Each row fills exactly one lane (12 x 1.875 = 22.5/s).
+  bottleneck: "output belts (full blue); inserters at ~80% (no capacity research)"
+  validators: {collisions: pass, power: "pass (42 poles, one network)", inserters: pass,
+               belts: "8 curves (output turns, splitter side outputs), 4 sideloads (3 output merges + middle coal row), ends = 3 outputs + 3 coal ends",
+               fluids: "pass (one network, every plant on both inputs, no output ports on pipes)",
+               rotations: "all 4 inside the cell, no grid collision, grid link <= 8.5"}
+
+check_in_game:
+  - aligns on the 4 existing corner roboports and builds only the block
+  - petroleum reaches the far (left) ends of the rows (2 entrances, 675/s each if both connected)
+log:
+  - "2026-11-18: built 1 module (1 belt), snapped"
+  - "2026-11-18: 3 modules (3 belts), no snapping, 4 corner roboports"
+  - "2026-11-18: coal on 2 blue belts via 2 splitters (was 3 half belts)"

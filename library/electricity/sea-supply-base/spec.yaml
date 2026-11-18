@@ -1,0 +1,58 @@
+label: "Sea Supply - Base"
+description: |
+  In-base loader for remote (sea) builds. One requester chest per product (requests one stack, 1 slot),
+  a fast inserter puts it on the product's own yellow belt. 7 belts leave WEST, each marked by a display
+  panel between an underground pair. Requests are OFF by default: switch the section on at bootstrap,
+  off when done. Return lane: an 8th belt arrives from the WEST (marked storage-chest) and is emptied
+  into a 1-slot unfiltered storage chest for the base bots. Includes the cell's 4 corner roboports.
+icons:
+  - {type: item, name: requester-chest}
+  - {type: item, name: landfill}
+
+status: built
+
+request:
+  products: [landfill, solar-panel, accumulator, medium-electric-pole, big-electric-pole, roboport, construction-robot]
+  belts: one yellow belt per product
+  pair: sea-supply-site (same belt order)
+  caps: "2026-11-18: every chest capped to one slot on both ends (waste <= 2 stacks per product + the belt); slower is fine"
+  requests: "2026-11-18: off by default, David toggles them"
+  constraint_overrides:
+    - yellow belts (not blue)
+    - outputs only, no input belts (bots deliver)
+    - not rotation-safe (uses the top grid line's big pole)
+
+result:
+  footprint: {cells: "1 (top-center)", tiles: "13x11", cell_tiles: "x 20..32, y 2..12"}
+  outputs:   # top to bottom when leaving west; every belt ~2.3/s, one lane (1 fast inserter)
+    - {item: landfill, request: 100}
+    - {item: solar-panel, request: 50}
+    - {item: accumulator, request: 50}
+    - {item: medium-electric-pole, request: 50}
+    - {item: big-electric-pole, request: 50}
+    - {item: roboport, request: 10}
+    - {item: construction-robot, request: 50}
+  inputs:
+    - {item: "anything returned from the site", belts: "8th belt, from the west"}
+  machines:
+    - {entity: requester-chest, count: 7, settings: "1 stack request, section off, bar 1"}
+    - {entity: storage-chest, count: "1 open (return), bar 1"}
+    - {entity: fast-inserter, count: 8}
+    - {entity: medium-electric-pole, count: 2}
+    - {entity: small-lamp, count: 2}
+    - {entity: display-panel, count: 8}
+    - {entity: roboport, count: 4, role: "cell corners, for alignment"}
+  bottleneck: "landfill: 1 fast inserter ~2.3/s (~85 min per Huge Solar field, 11,664 tiles)"
+  validators: {collisions: pass, power: pass, grid_link: "medium pole 2.5 from grid big pole",
+               inserters: "pass (each chest's belt traced to the output panel with the same icon; return -> open chest)",
+               belts: "6 curves, 0 sideloads, ends = 7 output undergrounds + return end", undergrounds: pass}
+
+check_in_game:
+  - align the 4 corner roboports on the existing ones; don't rotate it
+  - requests import switched off ("active": false) and chests limited to 1 slot ("bar": 1) - format from draftsman, not verified
+  - bot-built medium pole auto-connects to the grid big pole
+log:
+  - "2026-11-17: built"
+  - "2026-11-17: return lane in from the west (row 11) -> unfiltered storage chest"
+  - "2026-11-18: snapping removed; includes the cell's 4 corner roboports"
+  - "2026-11-18: one 1-slot requester per product (landfill 8 -> 1), requests of one stack, off by default"

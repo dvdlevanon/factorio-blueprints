@@ -1,0 +1,49 @@
+label: "Steam Power 270 MW"
+description: |
+  150 boilers + 300 steam engines (exactly 2 per boiler), 270 MW at full load. 4 cells wide x 1 tall.
+  Water on the WEST edge (the sea side): 11 pipe-to-ground, two tiles between each, each feeding exactly one
+  boiler row (separate pipes, never joined). Coal on the EAST edge: 2 straight blue belts. Everything sits
+  inside the cells; only undergrounds and the 2 coal belts cross grid lines. Includes the 10 corner roboports.
+icons:
+  - {type: item, name: boiler}
+  - {type: item, name: steam-engine}
+
+status: built
+
+request:
+  ask: "boiler power, balanced, >= 150 boilers; all water inputs together at one side as underground pipes
+        with two tiles between; coal inputs together too; full capacity"
+  change: "2026-11-18: v2 did not fit the grid; water on one side (usually the sea), coal on the other"
+
+result:
+  footprint: {cells: "4x1 (horizontal)", note: "all entities inside cell interiors", placement: "not rotation-safe"}
+  inputs:
+    - {fluid: water, rate: "11 pipe-to-ground facing E at x=4 (west edge), rows 6..36 every 3 (from the top-left roboport): connect each from the west with a pipe-to-ground (<= 10 tiles, under the grid line); 720 or 840/s each = 1 offshore pump each; 9,000/s total"}
+    - {item: coal, belts: "2 blue belts in at x=197 (east edge), rows 16 (43.2/s, 96% full) and 44 (24.3/s); 67.5/s total"}
+  outputs:
+    - {power: "270 MW into the medium-pole network (grid link 2.1)"}
+  machines:
+    - {entity: boiler, count: "150 (cells 2-4: 3 rows of 14; cell 1: 2 rows of 12)"}
+    - {entity: steam-engine, count: 300}
+    - {entity: fast-inserter, count: 150}
+    - {entity: medium-electric-pole, count: 153}
+    - {entity: small-lamp, count: 12}
+    - {entity: roboport, count: 10, role: "cell corners"}
+  ratios: |
+    boiler 1.8 MW -> 60 steam/s; steam engine 30/s = 900 kW -> 2 per boiler. coal 4 MJ -> 0.45/s per boiler.
+    Water: one input per boiler row (12 or 14 boilers = 720 / 840 water/s < 1200/s of one offshore pump).
+    Coal: row 16 feeds rows A+B (96 boilers, 43.2/s - needs blue), row 44 feeds rows C (54 boilers, 24.3/s).
+  water_routing: "maze router: pipe-to-ground pairs along free rows and between inserters, pipes only at turns;
+                  checked: no line touches another line, a foreign boiler or a steam port"
+  validators: {collisions: pass, power: "pass (153 poles, one network; every engine in a supply area)",
+               fluids: "11 separate water networks, each exactly 1 input + 1 boiler row; every boiler -> exactly 2 engines",
+               belts: "0 curves, 0 sideloads, 2 row ends, 6 underground pairs (under the grid lines)",
+               grid: "every entity inside a cell interior, no tile on a grid roboport/big pole/lamp, grid link 2.1"}
+
+check_in_game:
+  - "pipe-to-ground pairs that cross each other (perpendicular) - allowed in the validator's model only"
+  - "the inserters need power to start: the grid must be live, or hand-feed one boiler row"
+log:
+  - "2026-11-18: built (168 boilers, inputs spread per cell)"
+  - "2026-11-18: rebuilt - all inputs grouped (12 water + 2 blue coal), 150 boilers"
+  - "2026-11-18: rebuilt 4x1 - water west edge, coal east edge, nothing on grid lines (v2 did not fit the grid)"

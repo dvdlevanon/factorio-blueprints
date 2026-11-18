@@ -1,0 +1,53 @@
+label: "Sea Supply - Site"
+description: |
+  Receiving end at the sea. 7 yellow belts arrive from the EAST (same order as Sea Supply - Base), each
+  emptied by a fast inserter into a 1-slot storage chest filtered to that product; construction robots
+  go straight into the roboport. Return lane: one 1-slot unfiltered storage chest catches whatever the
+  bots must store (fish, ...); a fast inserter puts it on an 8th belt that leaves EAST, back to base.
+  Big pole at the input side: connect your pole line there.
+icons:
+  - {type: item, name: storage-chest}
+  - {type: item, name: roboport}
+
+status: built
+
+request:
+  pair: sea-supply-base
+  return: "2026-11-17: replace the fish chests with a lane back to base for everything stored"
+  caps: "2026-11-18: no landfill buffer; every chest one slot (leftovers wasted when the build is done)"
+  constraint_overrides:
+    - standalone (sea, own network), no grid
+    - yellow belts
+
+result:
+  footprint: {tiles: "14x13"}
+  inputs:   # each ~2.3/s, one lane
+    - {item: landfill, into: "storage chest, 1 slot (100)"}
+    - {item: solar-panel, into: "storage chest, 1 slot (50)"}
+    - {item: accumulator, into: "storage chest, 1 slot (50)"}
+    - {item: medium-electric-pole, into: "storage chest, 1 slot (50)"}
+    - {item: big-electric-pole, into: "storage chest, 1 slot (50)"}
+    - {item: roboport, into: "storage chest, 1 slot (10)"}
+    - {item: construction-robot, into: roboport}
+  outputs:
+    - {item: "anything stored (fish, ...)", belts: "~2.3/s, one lane, EAST, marked storage-chest"}
+  machines:
+    - {entity: storage-chest, count: "6 filtered + 1 open (return), all bar 1"}
+    - {entity: fast-inserter, count: 8}
+    - {entity: roboport, count: 1}
+    - {entity: medium-electric-pole, count: 2}
+    - {entity: big-electric-pole, count: 1}
+    - {entity: small-lamp, count: 2}
+    - {entity: display-panel, count: "7 + 1 return"}
+  validators: {collisions: pass, power: pass,
+               inserters: "pass (each belt traced from its marked input to the chest with the same filter; return chest traced to the return output)",
+               belts: "7 curves, 0 sideloads, ends = 7 column ends + return exit", undergrounds: pass}
+
+check_in_game:
+  - storage chest filters and 1-slot limit import (draftsman format, not verified offline)
+  - roboport here must link to the first field's roboports (logistic areas touching)
+  - power before the first field is built: pole line to the big pole
+log:
+  - "2026-11-17: built"
+  - "2026-11-17: 4 fish chests replaced by the return lane"
+  - "2026-11-18: landfill buffer removed (8 chests -> 1); every chest 1 slot"

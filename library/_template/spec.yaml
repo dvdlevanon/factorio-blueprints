@@ -1,0 +1,31 @@
+# Blueprint spec. Readable by David and parsed by the generator/validators.
+# "request" = what David asked for (maxima and limits). "result" = what was built and verified.
+
+label: "Green Circuits 1 belt"          # in-game blueprint label
+description: |                           # in-game description (optional), plus notes for David
+  Free text.
+icons:                                   # in-game blueprint icons (up to 4)
+  - {type: item, name: electronic-circuit}
+
+status: draft            # draft | built | verified-in-game
+
+request:
+  product: electronic-circuit
+  rate: 1 blue belt      # target output, in belts
+  footprint:             # cell limits on the 50x50 roboport grid
+    cells_wide_max: 2
+    cells_high_max: 1
+  inputs_offered:        # maxima David can supply (not targets)
+    - {item: iron-plate, max: 1 blue belt}
+  constraint_overrides: []   # deviations from the global rules in CLAUDE.md, e.g. "red belts"
+
+result:                  # filled by the generator after validation
+  footprint: {cells: "2x1", tiles: "92x46"}
+  inputs:  []            # [{item: iron-plate, belts: "2/3 blue", side: right, lanes: both}]
+  outputs: []            # [{item: electronic-circuit, belts: "1 blue", side: left}]
+  machines: []           # [{entity: assembling-machine-3, recipe: electronic-circuit, count: 24}]
+  bottleneck: ""         # e.g. "copper cable, 97% of capacity"
+  validators: {}         # {collisions: pass, power: pass, inserters: pass, belts: pass, undergrounds: pass, fluids: pass, ratios: pass}
+
+check_in_game: []        # things that can't be verified offline
+log: []                  # dated notes: "2026-11-17: built, all validators pass"

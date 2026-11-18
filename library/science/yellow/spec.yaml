@@ -1,0 +1,87 @@
+label: Utility Science
+description: '2x2 cells. Two identical halves (one per cell row), each 132 machines in 3 mirrored row pairs with
+  LDS | processing unit and frame belts. Outputs meet on the west edge. Inputs on the east edge, marked by panels,
+  per half: LDS red belt, processing units yellow, frames yellow.'
+icons:
+- type: item
+  name: utility-science-pack
+status: built
+request:
+  product: utility-science-pack
+  rate: 1 full blue belt
+  inputs: 'belt colour sized to need: yellow <= 15/s, red <= 30/s, blue <= 45/s'
+  makes_itself: []
+result:
+  footprint:
+    cells: 2x2
+    placement: not rotation-safe
+  inputs:
+  - item: low-density-structure
+    belt: red (22.5/s)
+    row: 2
+  - item: processing-unit
+    belt: yellow (15/s)
+    row: 3
+  - item: flying-robot-frame
+    belt: yellow (7.5/s)
+    row: 4
+  - item: low-density-structure
+    belt: red (22.5/s)
+    row: 52
+  - item: processing-unit
+    belt: yellow (15/s)
+    row: 53
+  - item: flying-robot-frame
+    belt: yellow (7.5/s)
+    row: 54
+  outputs:
+  - item: utility-science-pack
+    belts: 1 full blue (45/s), west edge, both lanes
+  machines:
+  - entity: assembling-machine-3
+    recipe: utility-science-pack
+    count: 264
+  - entity: display-panel
+    count: 7
+  - entity: express-splitter
+    count: 12
+  - entity: express-transport-belt
+    count: 1877
+  - entity: express-underground-belt
+    count: 24
+  - entity: fast-inserter
+    count: 528
+  - entity: fast-transport-belt
+    count: 10
+  - entity: fast-underground-belt
+    count: 4
+  - entity: long-handed-inserter
+    count: 264
+  - entity: medium-electric-pole
+    count: 313
+  - entity: small-lamp
+    count: 48
+  - entity: transport-belt
+    count: 20
+  - entity: underground-belt
+    count: 8
+  ratios: "\\\npack: 3 LDS + 2 processing units + 1 frame -> 3 packs, 21 s; AM3 -> 0.179/s. 45/s needs 252; 264\
+    \ built (47.1/s).\ninputs (whole block): LDS 45/s, processing units 30/s, frames 15/s. Per half: LDS 22.5 (red\
+    \ belt),\n  processing units 15 (yellow), frames 7.5 (yellow).\nper pair: LDS 7.5, processing units 5, frames\
+    \ 2.5 /s."
+  bottleneck: 'inputs: used exactly (output = 45/s); machines 5% spare'
+  validators:
+  - 'collisions: none (3379 entities)'
+  - 'power: all powered, 313 poles in one network'
+  - 'belts: 72 curves, 13 sideloads, 13 dead ends, 18 underground pairs'
+  - 'power: 1 bridge poles join the bands'
+  - 'belts: 72 curves, 13 sideloads, 13 dead ends - all intended (formers, taps, collectors, route turns; row ends;
+    outputs)'
+  - 'flow: 264 machines each get all ingredients; 792 inserters move items their target uses; no item rides a belt
+    without a consumer or exit; exits carry only their product on both lanes; 12 mixed belts have the intended lanes'
+  - inputs all on the east edge, output on the west edge
+  - '2x2 cells: inside, no grid collision, grid link 2.1 (<= 9); not rotation-safe'
+check_in_game:
+- don't rotate it; align the 9 corner roboports
+log:
+- '2026-11-19: built'

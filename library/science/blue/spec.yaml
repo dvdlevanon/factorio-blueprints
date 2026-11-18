@@ -1,0 +1,93 @@
+label: Chemical Science
+description: '3x2 cells. Two identical halves (one per cell row), each 222 machines in 3 mirrored row pairs with
+  engine | red circuit and red circuit | sulfur belts. Outputs meet on the west edge. Inputs on the east edge, marked
+  by panels, per half: engines red belt, red circuits 2 red belts, sulfur yellow.'
+icons:
+- type: item
+  name: chemical-science-pack
+status: built
+request:
+  product: chemical-science-pack
+  rate: 1 full blue belt
+  inputs: 'belt colour sized to need: yellow <= 15/s, red <= 30/s, blue <= 45/s'
+  makes_itself: []
+result:
+  footprint:
+    cells: 3x2
+    placement: not rotation-safe
+  inputs:
+  - item: engine-unit
+    belt: red (22.5/s)
+    row: 2
+  - item: advanced-circuit
+    belt: red (16.875/s)
+    row: 3
+  - item: advanced-circuit
+    belt: red (16.875/s)
+    row: 4
+  - item: sulfur
+    belt: yellow (11.25/s)
+    row: 5
+  - item: engine-unit
+    belt: red (22.5/s)
+    row: 52
+  - item: advanced-circuit
+    belt: red (16.875/s)
+    row: 53
+  - item: advanced-circuit
+    belt: red (16.875/s)
+    row: 54
+  - item: sulfur
+    belt: yellow (11.25/s)
+    row: 55
+  outputs:
+  - item: chemical-science-pack
+    belts: 1 full blue (45/s), west edge, both lanes
+  machines:
+  - entity: assembling-machine-3
+    recipe: chemical-science-pack
+    count: 444
+  - entity: display-panel
+    count: 9
+  - entity: express-splitter
+    count: 16
+  - entity: express-transport-belt
+    count: 2903
+  - entity: express-underground-belt
+    count: 36
+  - entity: fast-inserter
+    count: 888
+  - entity: fast-transport-belt
+    count: 30
+  - entity: fast-underground-belt
+    count: 12
+  - entity: long-handed-inserter
+    count: 444
+  - entity: medium-electric-pole
+    count: 505
+  - entity: small-lamp
+    count: 84
+  - entity: transport-belt
+    count: 10
+  - entity: underground-belt
+    count: 4
+  ratios: "\\\npack: 2 engines + 3 red circuits + 1 sulfur -> 2 packs, 24 s; AM3 -> 0.104/s. 45/s needs 432; 444\
+    \ built (46.3/s).\ninputs (whole block): engines 45/s, red circuits 67.5/s, sulfur 22.5/s. Per half: engines\
+    \ 22.5 (red belt),\n  red circuits 2 x 16.9 (red belts, one per lane), sulfur 11.25 (yellow).\nper pair: engines\
+    \ 7.5, red 11.25 (two lanes), sulfur 3.75 /s - every lane under half full."
+  bottleneck: 'inputs: used exactly (output = 45/s); machines 3% spare'
+  validators:
+  - 'collisions: none (5385 entities)'
+  - 'power: all powered, 505 poles in one network'
+  - 'belts: 74 curves, 19 sideloads, 13 dead ends, 26 underground pairs'
+  - 'power: 1 bridge poles join the bands'
+  - 'belts: 74 curves, 19 sideloads, 13 dead ends - all intended (formers, taps, collectors, route turns; row ends;
+    outputs)'
+  - 'flow: 444 machines each get all ingredients; 1332 inserters move items their target uses; no item rides a belt
+    without a consumer or exit; exits carry only their product on both lanes; 12 mixed belts have the intended lanes'
+  - inputs all on the east edge, output on the west edge
+  - '3x2 cells: inside, no grid collision, grid link 2.1 (<= 9); not rotation-safe'
+check_in_game:
+- don't rotate it; align the 12 corner roboports
+log:
+- '2026-11-19: built'

@@ -1,0 +1,28 @@
+label: "Roboport 1000x1000"
+description: |
+  20x20 roboports on the 50x50 grid, with the grid's big poles and lamps.
+  Logistic coverage 1000x1000 tiles. Same layout and snapping as David's "Roboport Huge".
+icons:
+  - {type: item, name: roboport}
+
+status: built
+
+request:
+  product: roboport grid
+  size: 20x20 roboports
+  name_rule: label = logistic coverage in tiles
+  constraint_overrides:
+    - this IS the grid, so it contains roboports, big poles and lamps (global rule 2 does not apply)
+
+result:
+  footprint: {cells: "20x20", logistic_tiles: "1000x1000"}
+  machines:
+    - {entity: roboport, count: 400}
+    - {entity: big-electric-pole, count: 1160}
+    - {entity: small-lamp, count: 780}
+  snapping: {snap-to-grid: 50x50, absolute: true, position-relative-to-grid: [192, 185]}
+  validators: {collisions: pass, wire_reach_32: pass, single_network: pass, power: pass}
+
+check_in_game: []
+log:
+  - "2026-11-17: generated; 5x5 layout matches the calibration export exactly (135 entities, 80 wires)"

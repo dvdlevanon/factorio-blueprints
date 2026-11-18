@@ -1,0 +1,46 @@
+label: "Sulfur"
+description: |
+  24 chemical plants in two mirrored rows of 12 around one sulfur belt (row A fills the south lane,
+  row B the north lane). Water and petroleum each have their own pipe system: the water port is a pipe,
+  the petroleum port is a pipe-to-ground diving under the water line. One inlet per fluid on the right.
+  Includes the cell's 4 corner roboports.
+icons:
+  - {type: item, name: sulfur}
+
+status: built
+
+request:
+  product: sulfur
+  rate: 1 full blue belt (default)
+  footprint: {cells_max: 2, prefer: 1}
+  constraint_overrides: []
+
+result:
+  footprint: {cells: "1", tiles: "41x17 + 4 corner roboports (54x54)", placement: "centered, rotation-safe"}
+  inputs:
+    - {fluid: water, rate: "675/s (720 max), one inlet, right, 2nd pipe row from the top"}
+    - {fluid: petroleum-gas, rate: "675/s (720 max), one inlet, right, top pipe row"}
+  outputs:
+    - {item: sulfur, belts: "1 full blue (45/s), left, both lanes"}
+  machines:
+    - {entity: chemical-plant, recipe: sulfur, count: 24}
+    - {entity: fast-inserter, count: 24}
+    - {entity: medium-electric-pole, count: 14}
+    - {entity: small-lamp, count: 6}
+    - {entity: display-panel, count: 3}
+    - {entity: roboport, count: 4, role: "cell corners, for alignment"}
+  ratios: |
+    recipe: 30 water + 30 petroleum -> 2 sulfur in 1 s; chemical plant speed 1 -> 2/s per plant.
+    45/s needs 22.5 plants; 24 (48/s). Each row of 12 fills one lane (24/s > 22.5).
+    Per plant 1.875/s out at 45/s (fast inserter ~2.3/s).
+  bottleneck: "output belt (full blue)"
+  validators: {collisions: pass, power: "pass (14 poles)", inserters: pass,
+               belts: "1 straight belt, one end", undergrounds: "pipe-to-ground all paired",
+               fluids: "2 networks never touching; every plant: fluid box 1 on water, box 2 on petroleum",
+               rotations: "all 4 inside the cell, no grid collision, grid link <= 7.6"}
+
+check_in_game:
+  - "which port takes which fluid: assumed box 1 (left port when facing north) = water, the first fluid in the recipe. If alt-mode shows it reversed, swap the two inlet connections"
+  - aligns on the 4 corner roboports
+log:
+  - "2026-11-18: built"

@@ -1,0 +1,2033 @@
+{
+ "blueprint": {
+  "item": "blueprint",
+  "label": "Roboport 250x250",
+  "icons": [
+   {
+    "signal": {
+     "name": "roboport"
+    },
+    "index": 1
+   }
+  ],
+  "snap-to-grid": {
+   "x": 50,
+   "y": 50
+  },
+  "absolute-snapping": true,
+  "position-relative-to-grid": {
+   "x": 192,
+   "y": 185
+  },
+  "entities": [
+   {
+    "entity_number": 1,
+    "name": "roboport",
+    "position": {
+     "x": 2,
+     "y": 2
+    },
+    "request_filters": {
+     "sections": [
+      {
+       "index": 1
+      }
+     ]
+    }
+   },
+   {
+    "entity_number": 2,
+    "name": "small-lamp",
+    "position": {
+     "x": 4.5,
+     "y": 0.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 3,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 5,
+     "y": 2
+    }
+   },
+   {
+    "entity_number": 4,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 29,
+     "y": 2
+    }
+   },
+   {
+    "entity_number": 5,
+    "name": "small-lamp",
+    "position": {
+     "x": 28.5,
+     "y": 3.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 6,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 5,
+     "y": 25
+    }
+   },
+   {
+    "entity_number": 7,
+    "name": "roboport",
+    "position": {
+     "x": 52,
+     "y": 2
+    },
+    "request_filters": {
+     "sections": [
+      {
+       "index": 1
+      }
+     ]
+    }
+   },
+   {
+    "entity_number": 8,
+    "name": "small-lamp",
+    "position": {
+     "x": 54.5,
+     "y": 0.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 9,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 55,
+     "y": 2
+    }
+   },
+   {
+    "entity_number": 10,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 79,
+     "y": 2
+    }
+   },
+   {
+    "entity_number": 11,
+    "name": "small-lamp",
+    "position": {
+     "x": 78.5,
+     "y": 3.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 12,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 55,
+     "y": 25
+    }
+   },
+   {
+    "entity_number": 13,
+    "name": "roboport",
+    "position": {
+     "x": 102,
+     "y": 2
+    },
+    "request_filters": {
+     "sections": [
+      {
+       "index": 1
+      }
+     ]
+    }
+   },
+   {
+    "entity_number": 14,
+    "name": "small-lamp",
+    "position": {
+     "x": 104.5,
+     "y": 0.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 15,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 105,
+     "y": 2
+    }
+   },
+   {
+    "entity_number": 16,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 129,
+     "y": 2
+    }
+   },
+   {
+    "entity_number": 17,
+    "name": "small-lamp",
+    "position": {
+     "x": 128.5,
+     "y": 3.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 18,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 105,
+     "y": 25
+    }
+   },
+   {
+    "entity_number": 19,
+    "name": "roboport",
+    "position": {
+     "x": 152,
+     "y": 2
+    },
+    "request_filters": {
+     "sections": [
+      {
+       "index": 1
+      }
+     ]
+    }
+   },
+   {
+    "entity_number": 20,
+    "name": "small-lamp",
+    "position": {
+     "x": 154.5,
+     "y": 0.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 21,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 155,
+     "y": 2
+    }
+   },
+   {
+    "entity_number": 22,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 179,
+     "y": 2
+    }
+   },
+   {
+    "entity_number": 23,
+    "name": "small-lamp",
+    "position": {
+     "x": 178.5,
+     "y": 3.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 24,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 155,
+     "y": 25
+    }
+   },
+   {
+    "entity_number": 25,
+    "name": "roboport",
+    "position": {
+     "x": 202,
+     "y": 2
+    },
+    "request_filters": {
+     "sections": [
+      {
+       "index": 1
+      }
+     ]
+    }
+   },
+   {
+    "entity_number": 26,
+    "name": "small-lamp",
+    "position": {
+     "x": 204.5,
+     "y": 0.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 27,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 205,
+     "y": 2
+    }
+   },
+   {
+    "entity_number": 28,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 205,
+     "y": 25
+    }
+   },
+   {
+    "entity_number": 29,
+    "name": "roboport",
+    "position": {
+     "x": 2,
+     "y": 52
+    },
+    "request_filters": {
+     "sections": [
+      {
+       "index": 1
+      }
+     ]
+    }
+   },
+   {
+    "entity_number": 30,
+    "name": "small-lamp",
+    "position": {
+     "x": 4.5,
+     "y": 50.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 31,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 5,
+     "y": 52
+    }
+   },
+   {
+    "entity_number": 32,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 29,
+     "y": 52
+    }
+   },
+   {
+    "entity_number": 33,
+    "name": "small-lamp",
+    "position": {
+     "x": 28.5,
+     "y": 53.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 34,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 5,
+     "y": 75
+    }
+   },
+   {
+    "entity_number": 35,
+    "name": "roboport",
+    "position": {
+     "x": 52,
+     "y": 52
+    },
+    "request_filters": {
+     "sections": [
+      {
+       "index": 1
+      }
+     ]
+    }
+   },
+   {
+    "entity_number": 36,
+    "name": "small-lamp",
+    "position": {
+     "x": 54.5,
+     "y": 50.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 37,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 55,
+     "y": 52
+    }
+   },
+   {
+    "entity_number": 38,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 79,
+     "y": 52
+    }
+   },
+   {
+    "entity_number": 39,
+    "name": "small-lamp",
+    "position": {
+     "x": 78.5,
+     "y": 53.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 40,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 55,
+     "y": 75
+    }
+   },
+   {
+    "entity_number": 41,
+    "name": "roboport",
+    "position": {
+     "x": 102,
+     "y": 52
+    },
+    "request_filters": {
+     "sections": [
+      {
+       "index": 1
+      }
+     ]
+    }
+   },
+   {
+    "entity_number": 42,
+    "name": "small-lamp",
+    "position": {
+     "x": 104.5,
+     "y": 50.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 43,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 105,
+     "y": 52
+    }
+   },
+   {
+    "entity_number": 44,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 129,
+     "y": 52
+    }
+   },
+   {
+    "entity_number": 45,
+    "name": "small-lamp",
+    "position": {
+     "x": 128.5,
+     "y": 53.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 46,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 105,
+     "y": 75
+    }
+   },
+   {
+    "entity_number": 47,
+    "name": "roboport",
+    "position": {
+     "x": 152,
+     "y": 52
+    },
+    "request_filters": {
+     "sections": [
+      {
+       "index": 1
+      }
+     ]
+    }
+   },
+   {
+    "entity_number": 48,
+    "name": "small-lamp",
+    "position": {
+     "x": 154.5,
+     "y": 50.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 49,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 155,
+     "y": 52
+    }
+   },
+   {
+    "entity_number": 50,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 179,
+     "y": 52
+    }
+   },
+   {
+    "entity_number": 51,
+    "name": "small-lamp",
+    "position": {
+     "x": 178.5,
+     "y": 53.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 52,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 155,
+     "y": 75
+    }
+   },
+   {
+    "entity_number": 53,
+    "name": "roboport",
+    "position": {
+     "x": 202,
+     "y": 52
+    },
+    "request_filters": {
+     "sections": [
+      {
+       "index": 1
+      }
+     ]
+    }
+   },
+   {
+    "entity_number": 54,
+    "name": "small-lamp",
+    "position": {
+     "x": 204.5,
+     "y": 50.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 55,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 205,
+     "y": 52
+    }
+   },
+   {
+    "entity_number": 56,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 205,
+     "y": 75
+    }
+   },
+   {
+    "entity_number": 57,
+    "name": "roboport",
+    "position": {
+     "x": 2,
+     "y": 102
+    },
+    "request_filters": {
+     "sections": [
+      {
+       "index": 1
+      }
+     ]
+    }
+   },
+   {
+    "entity_number": 58,
+    "name": "small-lamp",
+    "position": {
+     "x": 4.5,
+     "y": 100.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 59,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 5,
+     "y": 102
+    }
+   },
+   {
+    "entity_number": 60,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 29,
+     "y": 102
+    }
+   },
+   {
+    "entity_number": 61,
+    "name": "small-lamp",
+    "position": {
+     "x": 28.5,
+     "y": 103.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 62,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 5,
+     "y": 125
+    }
+   },
+   {
+    "entity_number": 63,
+    "name": "roboport",
+    "position": {
+     "x": 52,
+     "y": 102
+    },
+    "request_filters": {
+     "sections": [
+      {
+       "index": 1
+      }
+     ]
+    }
+   },
+   {
+    "entity_number": 64,
+    "name": "small-lamp",
+    "position": {
+     "x": 54.5,
+     "y": 100.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 65,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 55,
+     "y": 102
+    }
+   },
+   {
+    "entity_number": 66,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 79,
+     "y": 102
+    }
+   },
+   {
+    "entity_number": 67,
+    "name": "small-lamp",
+    "position": {
+     "x": 78.5,
+     "y": 103.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 68,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 55,
+     "y": 125
+    }
+   },
+   {
+    "entity_number": 69,
+    "name": "roboport",
+    "position": {
+     "x": 102,
+     "y": 102
+    },
+    "request_filters": {
+     "sections": [
+      {
+       "index": 1
+      }
+     ]
+    }
+   },
+   {
+    "entity_number": 70,
+    "name": "small-lamp",
+    "position": {
+     "x": 104.5,
+     "y": 100.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 71,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 105,
+     "y": 102
+    }
+   },
+   {
+    "entity_number": 72,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 129,
+     "y": 102
+    }
+   },
+   {
+    "entity_number": 73,
+    "name": "small-lamp",
+    "position": {
+     "x": 128.5,
+     "y": 103.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 74,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 105,
+     "y": 125
+    }
+   },
+   {
+    "entity_number": 75,
+    "name": "roboport",
+    "position": {
+     "x": 152,
+     "y": 102
+    },
+    "request_filters": {
+     "sections": [
+      {
+       "index": 1
+      }
+     ]
+    }
+   },
+   {
+    "entity_number": 76,
+    "name": "small-lamp",
+    "position": {
+     "x": 154.5,
+     "y": 100.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 77,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 155,
+     "y": 102
+    }
+   },
+   {
+    "entity_number": 78,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 179,
+     "y": 102
+    }
+   },
+   {
+    "entity_number": 79,
+    "name": "small-lamp",
+    "position": {
+     "x": 178.5,
+     "y": 103.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 80,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 155,
+     "y": 125
+    }
+   },
+   {
+    "entity_number": 81,
+    "name": "roboport",
+    "position": {
+     "x": 202,
+     "y": 102
+    },
+    "request_filters": {
+     "sections": [
+      {
+       "index": 1
+      }
+     ]
+    }
+   },
+   {
+    "entity_number": 82,
+    "name": "small-lamp",
+    "position": {
+     "x": 204.5,
+     "y": 100.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 83,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 205,
+     "y": 102
+    }
+   },
+   {
+    "entity_number": 84,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 205,
+     "y": 125
+    }
+   },
+   {
+    "entity_number": 85,
+    "name": "roboport",
+    "position": {
+     "x": 2,
+     "y": 152
+    },
+    "request_filters": {
+     "sections": [
+      {
+       "index": 1
+      }
+     ]
+    }
+   },
+   {
+    "entity_number": 86,
+    "name": "small-lamp",
+    "position": {
+     "x": 4.5,
+     "y": 150.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 87,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 5,
+     "y": 152
+    }
+   },
+   {
+    "entity_number": 88,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 29,
+     "y": 152
+    }
+   },
+   {
+    "entity_number": 89,
+    "name": "small-lamp",
+    "position": {
+     "x": 28.5,
+     "y": 153.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 90,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 5,
+     "y": 175
+    }
+   },
+   {
+    "entity_number": 91,
+    "name": "roboport",
+    "position": {
+     "x": 52,
+     "y": 152
+    },
+    "request_filters": {
+     "sections": [
+      {
+       "index": 1
+      }
+     ]
+    }
+   },
+   {
+    "entity_number": 92,
+    "name": "small-lamp",
+    "position": {
+     "x": 54.5,
+     "y": 150.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 93,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 55,
+     "y": 152
+    }
+   },
+   {
+    "entity_number": 94,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 79,
+     "y": 152
+    }
+   },
+   {
+    "entity_number": 95,
+    "name": "small-lamp",
+    "position": {
+     "x": 78.5,
+     "y": 153.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 96,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 55,
+     "y": 175
+    }
+   },
+   {
+    "entity_number": 97,
+    "name": "roboport",
+    "position": {
+     "x": 102,
+     "y": 152
+    },
+    "request_filters": {
+     "sections": [
+      {
+       "index": 1
+      }
+     ]
+    }
+   },
+   {
+    "entity_number": 98,
+    "name": "small-lamp",
+    "position": {
+     "x": 104.5,
+     "y": 150.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 99,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 105,
+     "y": 152
+    }
+   },
+   {
+    "entity_number": 100,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 129,
+     "y": 152
+    }
+   },
+   {
+    "entity_number": 101,
+    "name": "small-lamp",
+    "position": {
+     "x": 128.5,
+     "y": 153.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 102,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 105,
+     "y": 175
+    }
+   },
+   {
+    "entity_number": 103,
+    "name": "roboport",
+    "position": {
+     "x": 152,
+     "y": 152
+    },
+    "request_filters": {
+     "sections": [
+      {
+       "index": 1
+      }
+     ]
+    }
+   },
+   {
+    "entity_number": 104,
+    "name": "small-lamp",
+    "position": {
+     "x": 154.5,
+     "y": 150.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 105,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 155,
+     "y": 152
+    }
+   },
+   {
+    "entity_number": 106,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 179,
+     "y": 152
+    }
+   },
+   {
+    "entity_number": 107,
+    "name": "small-lamp",
+    "position": {
+     "x": 178.5,
+     "y": 153.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 108,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 155,
+     "y": 175
+    }
+   },
+   {
+    "entity_number": 109,
+    "name": "roboport",
+    "position": {
+     "x": 202,
+     "y": 152
+    },
+    "request_filters": {
+     "sections": [
+      {
+       "index": 1
+      }
+     ]
+    }
+   },
+   {
+    "entity_number": 110,
+    "name": "small-lamp",
+    "position": {
+     "x": 204.5,
+     "y": 150.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 111,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 205,
+     "y": 152
+    }
+   },
+   {
+    "entity_number": 112,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 205,
+     "y": 175
+    }
+   },
+   {
+    "entity_number": 113,
+    "name": "roboport",
+    "position": {
+     "x": 2,
+     "y": 202
+    },
+    "request_filters": {
+     "sections": [
+      {
+       "index": 1
+      }
+     ]
+    }
+   },
+   {
+    "entity_number": 114,
+    "name": "small-lamp",
+    "position": {
+     "x": 4.5,
+     "y": 200.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 115,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 5,
+     "y": 202
+    }
+   },
+   {
+    "entity_number": 116,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 29,
+     "y": 202
+    }
+   },
+   {
+    "entity_number": 117,
+    "name": "small-lamp",
+    "position": {
+     "x": 28.5,
+     "y": 203.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 118,
+    "name": "roboport",
+    "position": {
+     "x": 52,
+     "y": 202
+    },
+    "request_filters": {
+     "sections": [
+      {
+       "index": 1
+      }
+     ]
+    }
+   },
+   {
+    "entity_number": 119,
+    "name": "small-lamp",
+    "position": {
+     "x": 54.5,
+     "y": 200.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 120,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 55,
+     "y": 202
+    }
+   },
+   {
+    "entity_number": 121,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 79,
+     "y": 202
+    }
+   },
+   {
+    "entity_number": 122,
+    "name": "small-lamp",
+    "position": {
+     "x": 78.5,
+     "y": 203.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 123,
+    "name": "roboport",
+    "position": {
+     "x": 102,
+     "y": 202
+    },
+    "request_filters": {
+     "sections": [
+      {
+       "index": 1
+      }
+     ]
+    }
+   },
+   {
+    "entity_number": 124,
+    "name": "small-lamp",
+    "position": {
+     "x": 104.5,
+     "y": 200.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 125,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 105,
+     "y": 202
+    }
+   },
+   {
+    "entity_number": 126,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 129,
+     "y": 202
+    }
+   },
+   {
+    "entity_number": 127,
+    "name": "small-lamp",
+    "position": {
+     "x": 128.5,
+     "y": 203.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 128,
+    "name": "roboport",
+    "position": {
+     "x": 152,
+     "y": 202
+    },
+    "request_filters": {
+     "sections": [
+      {
+       "index": 1
+      }
+     ]
+    }
+   },
+   {
+    "entity_number": 129,
+    "name": "small-lamp",
+    "position": {
+     "x": 154.5,
+     "y": 200.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 130,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 155,
+     "y": 202
+    }
+   },
+   {
+    "entity_number": 131,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 179,
+     "y": 202
+    }
+   },
+   {
+    "entity_number": 132,
+    "name": "small-lamp",
+    "position": {
+     "x": 178.5,
+     "y": 203.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 133,
+    "name": "roboport",
+    "position": {
+     "x": 202,
+     "y": 202
+    },
+    "request_filters": {
+     "sections": [
+      {
+       "index": 1
+      }
+     ]
+    }
+   },
+   {
+    "entity_number": 134,
+    "name": "small-lamp",
+    "position": {
+     "x": 204.5,
+     "y": 200.5
+    },
+    "color": {
+     "r": 1,
+     "g": 1,
+     "b": 0.75,
+     "a": 1
+    }
+   },
+   {
+    "entity_number": 135,
+    "name": "big-electric-pole",
+    "position": {
+     "x": 205,
+     "y": 202
+    }
+   }
+  ],
+  "wires": [
+   [
+    3,
+    5,
+    4,
+    5
+   ],
+   [
+    4,
+    5,
+    9,
+    5
+   ],
+   [
+    9,
+    5,
+    10,
+    5
+   ],
+   [
+    10,
+    5,
+    15,
+    5
+   ],
+   [
+    15,
+    5,
+    16,
+    5
+   ],
+   [
+    16,
+    5,
+    21,
+    5
+   ],
+   [
+    21,
+    5,
+    22,
+    5
+   ],
+   [
+    22,
+    5,
+    27,
+    5
+   ],
+   [
+    31,
+    5,
+    32,
+    5
+   ],
+   [
+    32,
+    5,
+    37,
+    5
+   ],
+   [
+    37,
+    5,
+    38,
+    5
+   ],
+   [
+    38,
+    5,
+    43,
+    5
+   ],
+   [
+    43,
+    5,
+    44,
+    5
+   ],
+   [
+    44,
+    5,
+    49,
+    5
+   ],
+   [
+    49,
+    5,
+    50,
+    5
+   ],
+   [
+    50,
+    5,
+    55,
+    5
+   ],
+   [
+    59,
+    5,
+    60,
+    5
+   ],
+   [
+    60,
+    5,
+    65,
+    5
+   ],
+   [
+    65,
+    5,
+    66,
+    5
+   ],
+   [
+    66,
+    5,
+    71,
+    5
+   ],
+   [
+    71,
+    5,
+    72,
+    5
+   ],
+   [
+    72,
+    5,
+    77,
+    5
+   ],
+   [
+    77,
+    5,
+    78,
+    5
+   ],
+   [
+    78,
+    5,
+    83,
+    5
+   ],
+   [
+    87,
+    5,
+    88,
+    5
+   ],
+   [
+    88,
+    5,
+    93,
+    5
+   ],
+   [
+    93,
+    5,
+    94,
+    5
+   ],
+   [
+    94,
+    5,
+    99,
+    5
+   ],
+   [
+    99,
+    5,
+    100,
+    5
+   ],
+   [
+    100,
+    5,
+    105,
+    5
+   ],
+   [
+    105,
+    5,
+    106,
+    5
+   ],
+   [
+    106,
+    5,
+    111,
+    5
+   ],
+   [
+    115,
+    5,
+    116,
+    5
+   ],
+   [
+    116,
+    5,
+    120,
+    5
+   ],
+   [
+    120,
+    5,
+    121,
+    5
+   ],
+   [
+    121,
+    5,
+    125,
+    5
+   ],
+   [
+    125,
+    5,
+    126,
+    5
+   ],
+   [
+    126,
+    5,
+    130,
+    5
+   ],
+   [
+    130,
+    5,
+    131,
+    5
+   ],
+   [
+    131,
+    5,
+    135,
+    5
+   ],
+   [
+    3,
+    5,
+    6,
+    5
+   ],
+   [
+    6,
+    5,
+    31,
+    5
+   ],
+   [
+    31,
+    5,
+    34,
+    5
+   ],
+   [
+    34,
+    5,
+    59,
+    5
+   ],
+   [
+    59,
+    5,
+    62,
+    5
+   ],
+   [
+    62,
+    5,
+    87,
+    5
+   ],
+   [
+    87,
+    5,
+    90,
+    5
+   ],
+   [
+    90,
+    5,
+    115,
+    5
+   ],
+   [
+    9,
+    5,
+    12,
+    5
+   ],
+   [
+    12,
+    5,
+    37,
+    5
+   ],
+   [
+    37,
+    5,
+    40,
+    5
+   ],
+   [
+    40,
+    5,
+    65,
+    5
+   ],
+   [
+    65,
+    5,
+    68,
+    5
+   ],
+   [
+    68,
+    5,
+    93,
+    5
+   ],
+   [
+    93,
+    5,
+    96,
+    5
+   ],
+   [
+    96,
+    5,
+    120,
+    5
+   ],
+   [
+    15,
+    5,
+    18,
+    5
+   ],
+   [
+    18,
+    5,
+    43,
+    5
+   ],
+   [
+    43,
+    5,
+    46,
+    5
+   ],
+   [
+    46,
+    5,
+    71,
+    5
+   ],
+   [
+    71,
+    5,
+    74,
+    5
+   ],
+   [
+    74,
+    5,
+    99,
+    5
+   ],
+   [
+    99,
+    5,
+    102,
+    5
+   ],
+   [
+    102,
+    5,
+    125,
+    5
+   ],
+   [
+    21,
+    5,
+    24,
+    5
+   ],
+   [
+    24,
+    5,
+    49,
+    5
+   ],
+   [
+    49,
+    5,
+    52,
+    5
+   ],
+   [
+    52,
+    5,
+    77,
+    5
+   ],
+   [
+    77,
+    5,
+    80,
+    5
+   ],
+   [
+    80,
+    5,
+    105,
+    5
+   ],
+   [
+    105,
+    5,
+    108,
+    5
+   ],
+   [
+    108,
+    5,
+    130,
+    5
+   ],
+   [
+    27,
+    5,
+    28,
+    5
+   ],
+   [
+    28,
+    5,
+    55,
+    5
+   ],
+   [
+    55,
+    5,
+    56,
+    5
+   ],
+   [
+    56,
+    5,
+    83,
+    5
+   ],
+   [
+    83,
+    5,
+    84,
+    5
+   ],
+   [
+    84,
+    5,
+    111,
+    5
+   ],
+   [
+    111,
+    5,
+    112,
+    5
+   ],
+   [
+    112,
+    5,
+    135,
+    5
+   ]
+  ],
+  "version": 562954249961473
+ }
+}

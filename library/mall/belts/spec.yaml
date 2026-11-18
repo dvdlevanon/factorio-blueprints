@@ -1,0 +1,40 @@
+label: "Mall - Belts"
+description: |
+  David's belts block (yellow / red / blue transport belts, ~120/min each, 1 cell), adapted: grid big
+  poles and lamps removed (corner roboports kept); the three belt exits replaced by storage - the mixed
+  output belt is sorted by two filter splitters into three rows, each with 8 fast inserters into 8
+  storage chests filtered to that belt.
+icons:
+  - {type: item, name: transport-belt}
+  - {type: item, name: fast-transport-belt}
+  - {type: item, name: express-transport-belt}
+
+status: built
+
+request:
+  source: "import/mall-belts.txt (David, 2026-11-18)"
+  ask: "add storage, like 8 yellow boxes for each kind of belt (8 per tier: 24 chests)"
+
+result:
+  footprint: {cells: "1", tiles: "54x54 incl. corner roboports"}
+  inputs:
+    - {item: iron-plate, belts: "2 rows on the right (gear rows)"}
+    - {fluid: lubricant, rate: "pipe on the right (blue belts)"}
+  outputs:
+    - {item: transport-belt, into: "8 storage chests (row 36)"}
+    - {item: fast-transport-belt, into: "8 storage chests (row 40)"}
+    - {item: express-transport-belt, into: "8 storage chests (row 44)"}
+  machines:
+    - {entity: assembling-machine-3, recipe: iron-gear-wheel, count: 20}
+    - {entity: assembling-machine-3, recipe: "transport-belt / fast / express", count: "3 each"}
+    - {entity: storage-chest, count: 24, settings: "filtered per tier"}
+    - {entity: express-splitter, count: "3 (1 original + 2 sorting)"}
+    - {entity: roboport, count: 4, role: "cell corners"}
+  validators: {collisions: pass, grid: pass, power: "pass (one network, grid link 8.5)", inserters: pass,
+               belts: "new part: 4 intended curves, 3 row ends, no sideloads", fluids: pass}
+
+check_in_game:
+  - storage chest filters import (draftsman format) and inserters fill them
+  - splitter filters: S-facing splitter, output_priority right = west (blue at x=7, red at x=8, yellow at x=9)
+log:
+  - "2026-11-18: imported, storage added"
