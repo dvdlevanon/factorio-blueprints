@@ -1,0 +1,5 @@
+# A directory with book.yaml is a blueprint book. Subdirectories are its contents.
+label: "Science"
+description: "One block per science pack, 1 full blue belt out on the left. Inputs from the right; input belt colour = what the input needs (yellow <= 15/s, red <= 30/s, blue <= 45/s)."
+icons: [{type: item, name: automation-science-pack}, {type: item, name: logistic-science-pack}, {type: item, name: chemical-science-pack}]
+order: [red]

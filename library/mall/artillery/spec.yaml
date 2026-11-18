@@ -1,0 +1,50 @@
+label: "Mall - Artillery Shells"
+description: |
+  Artillery shells at 60/min, output on a belt to the left. 2 cells side by side. Right cell: 5 sulfur ->
+  36 explosives chemical plants (sulfur | coal trunk). Left cell: 26 cannon-shell machines, 2 radar units
+  (gear machine inserting straight into a radar machine), 14 artillery-shell machines. Includes the 6
+  corner roboports.
+icons:
+  - {type: item, name: artillery-shell}
+
+status: built
+
+request:
+  source: "import/mall-artillery.txt (David's 30/min design, 2026-11-18)"
+  ask: "more output, keep the size reasonable (60/min chosen); output on a belt, no buffers"
+
+result:
+  footprint: {cells: "2x1 (side by side)", tiles: "94x45 inside the 2 cells", placement: "not rotation-safe"}
+  inputs:      # all from the right; belt colour = need
+    - {item: steel-plate, belts: "yellow, 8/s (row 8)"}
+    - {item: plastic-bar, belts: "yellow, 8/s (row 10)"}
+    - {item: iron-plate, belts: "red, 20/s (row 12, radars + gears)"}
+    - {item: electronic-circuit, belts: "yellow, 5/s (row 13)"}
+    - {fluid: petroleum-gas, rate: "150/s (row 15)"}
+    - {fluid: water, rate: "~310/s (row 17)"}
+    - {item: coal, belts: "yellow, 8/s (row 27)"}
+  outputs:
+    - {item: artillery-shell, belts: "1/s, left (row 39)"}
+  machines:
+    - {entity: assembling-machine-3, recipe: artillery-shell, count: 14}
+    - {entity: assembling-machine-3, recipe: explosive-cannon-shell, count: 26}
+    - {entity: assembling-machine-3, recipe: radar, count: 2}
+    - {entity: assembling-machine-3, recipe: iron-gear-wheel, count: 2}
+    - {entity: chemical-plant, recipe: explosives, count: 36}
+    - {entity: chemical-plant, recipe: sulfur, count: 5}
+    - {entity: roboport, count: 6, role: "cell corners"}
+  ratios: |
+    1 shell/s needs 12 shell machines (built 14), 4 cannon shells/s (26 machines, 4.06/s), 1 radar/s,
+    16 explosives/s (36 plants, 18/s; 8 into cannon shells + 8 into artillery shells), 8 sulfur/s (5 plants, 10/s).
+    Radar: each unit's gear machine makes 2.5 gears/s = 0.5 radar/s, so 2 units = 1 radar/s EXACTLY - the
+    radars are the bottleneck at exactly 60/min.
+  bottleneck: "radars (exactly 1/s)"
+  validators: {collisions: pass, power: "pass (77 poles, one network)", grid: "2x1 cells, no grid collision, grid link 4.7",
+               inserters: "pass (every machine reaches all ingredients; products reach their consumers)",
+               belts: "24 intended curves, 7 sideloads, 8 ends", fluids: "2 networks (petroleum, water), every port right"}
+
+check_in_game:
+  - "sulfur plants: water left port, petroleum right port (swap the inlets if reversed)"
+  - bulk inserters carry 2 (radar units)
+log:
+  - "2026-11-18: built at 60/min (was 30/min)"

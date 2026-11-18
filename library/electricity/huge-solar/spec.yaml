@@ -1,0 +1,37 @@
+label: "Huge Solar 4R"
+description: |
+  David's "Huge Solar" (6x6 modules of 18x18 = 108x108 tiles) with 4 roboports instead of 16.
+  Standalone: no grid snapping. Paste fields edge to edge; each built field brings the next into range.
+  Roboports at modules (col,row) (0,1) (2,3) (3,1) (4,5), found by exhaustive search: a lone field is
+  fully inside its own construction areas, and tiled fields form one logistic network in all 4 directions.
+icons:
+  - {type: item, name: solar-panel}
+
+status: built
+
+request:
+  source: import/huge-solar.txt (David's in-game "Huge Solar")
+  change: fewest roboports that still cover the field and chain to the next field
+  constraint_overrides:
+    - standalone 108x108 field, not on the 50x50 roboport grid, no snapping
+    - contains its own roboports
+
+result:
+  footprint: {tiles: "108x108"}
+  machines:
+    - {entity: solar-panel, count: 848}          # was 800
+    - {entity: accumulator, count: 720}
+    - {entity: roboport, count: 4}               # was 16
+    - {entity: medium-electric-pole, count: 144}
+    - {entity: big-electric-pole, count: 36}
+  power: "50.9 MW peak (60 kW/panel); ~35.6 MW average (70% wiki figure); 3.6 GJ storage"
+  accumulator_ratio: "0.85 per panel (wiki optimum 0.84)"
+  validators: {collisions: pass, power: pass, wires: pass, construction_coverage: "pass, 9.5-tile margin",
+               logistic_chaining: "pass, longest link 36 <= 50"}
+
+check_in_game:
+  - networks join when 50x50 logistic areas touch (wiki rule)
+  - pasting the next field edge to edge: does it build fully from the previous field?
+  - first build is slower (4 roboports to charge at)
+log:
+  - "2026-11-17: built from David's Huge Solar; 16 -> 4 roboports, +48 panels"

@@ -1,0 +1,5 @@
+# A directory with book.yaml is a blueprint book. Subdirectories are its contents.
+label: "Mall"
+description: "Mall blocks fitted to the roboport grid (corner roboports included). Products go to storage chests for the bots."
+icons: [{type: item, name: assembling-machine-3}, {type: item, name: storage-chest}]
+order: [all-in-one, belts, solar-accumulator, artillery]

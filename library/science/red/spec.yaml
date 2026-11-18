@@ -1,0 +1,53 @@
+label: "Automation Science"
+description: |
+  3 cells wide x 1 tall. 3 mirrored pairs of rows (32 machines per row); each pair shares one mixed belt
+  (copper | gears). Gears are made on the right by 20 assemblers in a vertical mirrored block fed by two
+  iron belts; the gear belt leaves at the top. Each input turns down its own column; splitters give each
+  pair a third. Two collectors on the left sideload the output from both sides. Input belt colour =
+  what it carries (all blue here). Includes the 8 corner roboports.
+icons:
+  - {type: item, name: automation-science-pack}
+
+status: built
+
+request:
+  product: automation-science-pack
+  rate: 1 full blue belt
+  inputs: "belt colour sized to need: yellow <= 15/s, red <= 30/s, blue <= 45/s"
+  makes_itself: [iron-gear-wheel]
+  constraint_overrides:
+    - input belts coloured by need (David 2026-11-18)
+
+result:
+  footprint: {cells: "3x1 (horizontal)", tiles: "131x45 + 8 corner roboports", placement: "not rotation-safe"}
+  inputs:      # all from the right, each marked by a panel between an underground pair
+    - {item: copper-plate, belts: "1 blue (45/s), top row"}
+    - {item: iron-plate, belts: "2 blue (90/s), bottom right (rows 35-36)"}
+  outputs:
+    - {item: automation-science-pack, belts: "1 full blue (45/s), left, middle, both lanes"}
+  machines:
+    - {entity: assembling-machine-3, recipe: automation-science-pack, count: 192}
+    - {entity: assembling-machine-3, recipe: iron-gear-wheel, count: 20}
+    - {entity: fast-inserter, count: 384}
+    - {entity: bulk-inserter, count: 60, role: "gear block: 2 iron in + 1 gear out per machine"}
+    - {entity: express-splitter, count: 4}
+    - {entity: medium-electric-pole, count: 247}
+    - {entity: small-lamp, count: 41}
+    - {entity: display-panel, count: 4}
+    - {entity: roboport, count: 8, role: "cell corners, for alignment"}
+  ratios: |
+    pack: 1 copper + 1 gear, 5 s; AM3 1.25 -> 0.25/s per machine. 45/s needs 180; 192 built (48/s).
+    gear: 2 iron -> 1, 0.5 s -> 2.5 gears/s per machine (5 iron/s, 2 bulk inserters). 45 gears/s needs 18;
+    20 built, but each iron belt feeds 9 machines' worth -> 22.5 gears/s per lane, 45 total (exactly full).
+    Per pair: copper 15/s and gears 15/s, one lane each.
+  bottleneck: "iron (2 full belts) = gears 45/s = output"
+  validators: {collisions: pass, power: "pass (247 poles, one network, bridge pole to the gear block)",
+               inserters: "pass (every pack machine reaches copper and gears; gear machines pick iron; gears reach the gear column; packs reach the output)",
+               belts: "22 curves, 6 sideloads, 6 ends - all intended", grid: "3x1 cells, no grid collision, grid link 2.1"}
+
+check_in_game:
+  - "don't rotate it; align the 8 corner roboports"
+  - bulk inserters carry 2 (bulk-inserter research) - gear machines need 5 iron/s each
+  - formers put copper and gears on one lane each (two sideloads, nothing behind)
+log:
+  - "2026-11-18: built"

@@ -1,0 +1,49 @@
+label: "Blue Circuits 15/s + Acid"
+description: |
+  Adapted from David's in-game design (blue-circuit + sulfuric-acid). Grid big poles and lamps removed (corner roboports
+  kept for alignment), pole wires rebuilt as a spanning tree, yellow belts -> blue, re-validated.
+icons: [{"name": "processing-unit"}, {"type": "fluid", "name": "sulfuric-acid"}]
+
+status: built
+
+request:
+  source: "David's Automation book (import/blue-circuit.txt): \"copy, they are good, adapt to my constraints\""
+
+result:
+  footprint: {cells: "2x2 + 1 acid cell (top right)"}
+  inputs:
+    - {item: electronic-circuit, belts: "8 (4 panels x 2 belts), right"}
+    - {item: advanced-circuit, belts: "1 (right)"}
+    - {fluid: petroleum-gas, rate: "120/s pipe (acid cell, right)"}
+    - {fluid: water, rate: "2 pipes (acid cell, right)"}
+    - {item: iron-plate, belts: "1 belt, uses 1.6/s (acid cell, right)"}
+  outputs:
+    - {item: processing-unit, belts: "15/s (1/3 blue), left"}
+  recipes:
+    - {recipe: processing-unit, assemblers: 160}
+    - {recipe: sulfur, assemblers: 4}
+    - {recipe: sulfuric-acid, assemblers: 2}
+  machines:
+    - {entity: fast-inserter, count: 326}
+    - {entity: medium-electric-pole, count: 198}
+    - {entity: assembling-machine-3, count: 160}
+    - {entity: long-handed-inserter, count: 160}
+    - {entity: small-lamp, count: 148}
+    - {entity: express-underground-belt, count: 16}
+    - {entity: display-panel, count: 12}
+    - {entity: roboport, count: 11}
+    - {entity: chemical-plant, count: 6}
+    - {entity: express-splitter, count: 3}
+  ratios: |
+    processing-unit 10 s -> 0.125/s per asm; 160 asm -> 20/s. 15/s needs 300 green, 30 red, 75 acid/s.
+    Acid cell: 4 sulfur plants x 2/s = 8 sulfur/s -> 80 acid/s (2 acid plants, 100/s max) >= 75.
+  bottleneck: "acid 80/s caps blue at 16/s; label 15/s"
+  validators: {collisions: pass, grid: pass, power: "pass (grid big poles counted)", inserters: "pickup+drop present",
+               belts: pass, undergrounds: pass, fluids: pass}
+
+check_in_game:
+  - align the corner roboports on the existing ones; multi-cell, not rotation-safe
+  - poles reach the grid big poles by in-game auto-connect (blueprint cannot store wires to them)
+  - acid reaches all assemblers (one 733-tile pipe network fed from one corner)
+log:
+  - "2026-11-18: adapted from David's design"

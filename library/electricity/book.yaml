@@ -1,0 +1,4 @@
+label: "Electricity"
+description: "Solar fields."
+icons: [{type: item, name: solar-panel}]
+order: [huge-solar, steam-power, sea-supply-base, sea-supply-site]

@@ -1,0 +1,29 @@
+label: "Roboport 50x250"
+description: |
+  5 roboports in a vertical line on the 50x50 grid, with the grid's big poles and lamps.
+  Temporary corridor: extend the network into a place, build there, then remove it.
+  Logistic coverage 50x250 tiles. Same layout and snapping as the squares.
+icons:
+  - {type: item, name: roboport}
+
+status: built
+
+request:
+  product: roboport line (vertical)
+  size: 1x5 roboports
+  name_rule: label = logistic coverage in tiles (W x H)
+  constraint_overrides:
+    - this IS the grid, so it contains roboports, big poles and lamps (global rule 2 does not apply)
+
+result:
+  footprint: {cells: "1x5", logistic_tiles: "50x250"}
+  machines:
+    - {entity: roboport, count: 5}
+    - {entity: big-electric-pole, count: 9}
+    - {entity: small-lamp, count: 5}
+  snapping: {snap-to-grid: 50x50, absolute: true, position-relative-to-grid: [192, 185]}
+  validators: {collisions: pass, wire_reach_32: pass, single_network: pass, power: pass}
+
+check_in_game: []
+log:
+  - "2026-11-17: generated (one row/column of the NxN lattice)"

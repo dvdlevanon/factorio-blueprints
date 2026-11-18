@@ -1,0 +1,46 @@
+label: "Steam Power 270 MW"
+description: |
+  150 boilers + 300 steam engines (exactly 2 per boiler), 270 MW at full load. 1 cell wide x 4 tall.
+  ALL inputs grouped on the right, in the middle: 12 water pipe-to-ground (two tiles between each) and
+  2 blue coal belts next to them. Every water input feeds exactly one boiler row (separate pipes, never
+  joined); the pipes fan out underground to the 12 rows. Coal trunks run up and down the right grid line
+  with a splitter per coal row. Includes the 10 corner roboports.
+icons:
+  - {type: item, name: boiler}
+  - {type: item, name: steam-engine}
+
+status: built
+
+request:
+  ask: "boiler power, balanced, >= 150 boilers; all water inputs together at one side as underground pipes
+        with two tiles between; coal inputs together too; full capacity"
+
+result:
+  footprint: {cells: "1x4 (vertical)", note: "coal trunks on the right grid line (x 48-50 of the cell frame), clear of the grid roboports/poles/lamps", placement: "not rotation-safe"}
+  inputs:      # all on the right, middle of the blueprint (between cells 2 and 3 from the top)
+    - {fluid: water, rate: "12 pipe-to-ground facing W at x=47, rows 84..117 every 3 (from the top-left roboport): connect each from the east with a pipe-to-ground (<= 10 tiles); 720-780/s each = 1 offshore pump each; 9,000/s total"}
+    - {item: coal, belts: "2 blue belts at x=50, rows 96 (top half) and 102 (bottom half), 33.75/s each; 67.5/s total"}
+  outputs:
+    - {power: "270 MW into the medium-pole network (links to the grid big poles, grid link 3.5)"}
+  machines:
+    - {entity: boiler, count: "150 (rows of 13 in cells 1 and 4, 12 in cells 2 and 3)"}
+    - {entity: steam-engine, count: 300}
+    - {entity: fast-inserter, count: 150}
+    - {entity: express-splitter, count: 6}
+    - {entity: medium-electric-pole, count: 148}
+    - {entity: roboport, count: 10, role: "cell corners"}
+  ratios: |
+    boiler 1.8 MW -> 60 steam/s; steam engine 30/s = 900 kW -> 2 per boiler. coal 4 MJ -> 0.45/s per boiler.
+    Water: one input per boiler row (12-13 boilers = 720-780/s < 1200/s of one offshore pump).
+    Coal: each trunk 75 boilers = 33.75/s (blue belt; yellow 15/s would not do). Coal rows 11.7/s (A+B) and 5.85/s (C).
+  validators: {collisions: pass, power: "pass (148 poles, one network; every engine in a supply area)",
+               fluids: "12 separate water networks, each exactly 1 input + 1 boiler row; every boiler -> exactly 2 engines",
+               belts: "10 curves, 0 sideloads, 8 row ends, 10 underground pairs",
+               grid: "no tile on a grid roboport/big pole/lamp, grid link 3.5"}
+
+check_in_game:
+  - "pipe-to-ground pairs that cross each other (perpendicular) - verified as allowed by the validator's model only"
+  - "the inserters need power to start: the grid must be live, or hand-feed one boiler row"
+log:
+  - "2026-11-18: built (168 boilers, inputs spread per cell)"
+  - "2026-11-18: rebuilt - all inputs grouped (12 water + 2 blue coal), 150 boilers"

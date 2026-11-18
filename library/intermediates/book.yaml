@@ -1,0 +1,7 @@
+# A directory with book.yaml is a blueprint book. Subdirectories are its contents:
+# a subdir with book.yaml is a nested book, a subdir with spec.yaml is a blueprint.
+label: "Intermediates"
+description: "Single-product blocks, 1 full blue belt out unless noted. Inputs from the right, output on the left."
+icons: [{type: item, name: electronic-circuit}]
+order: [plastic, sulfur, battery, explosives, green-circuit, red-circuit, blue-circuit, engine, electric-engine,
+        flying-robot-frame, low-density-structure, oil-megapack]

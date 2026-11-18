@@ -1,0 +1,53 @@
+label: "Low Density Structure"
+description: |
+  184 assembling machines in 8 rows of 23, 2x2 cells. Each pair of rows shares a plastic|steel belt
+  (long-handed) between two copper belts (fast, one per row). Each pair gets 4 input belts on the right:
+  plastic (curves onto the shared belt's north lane), copper A, copper B (underground under the merge),
+  steel (south lane). Output belts are shared between neighbouring pairs; two collectors on the left meet
+  on the horizontal grid line and sideload into the yellow output belt (one lane each). Gap in the rows
+  for the grid poles between the cells. Includes the 9 corner roboports.
+icons:
+  - {type: item, name: low-density-structure}
+
+status: built
+
+request:
+  product: low-density-structure
+  rate: "1 yellow belt (15/s) - David's choice (a full blue belt = 540 machines, 20 belts of copper)"
+  constraint_overrides:
+    - yellow output belt
+
+result:
+  footprint: {cells: "2x2", tiles: "78x65 inside the 4 cells (crosses the horizontal grid line on the left)", placement: "not rotation-safe"}
+  inputs:      # all from the right, 4 per pair of rows (top to bottom: plastic, copper, copper, steel)
+    - {item: copper-plate, belts: "8 blue belts, 38.3/s each (300/s at 15/s)"}
+    - {item: plastic-bar, belts: "4 blue belts, 19.2/s each (75/s total)"}
+    - {item: steel-plate, belts: "4 yellow-or-blue belts, 7.7/s each (30/s total)"}
+  outputs:
+    - {item: low-density-structure, belts: "1 yellow belt (15/s), left, on the horizontal grid line between the cells"}
+  machines:
+    - {entity: assembling-machine-3, recipe: low-density-structure, count: 184}
+    - {entity: fast-inserter, count: "368 (184 copper in, 184 out)"}
+    - {entity: long-handed-inserter, count: "184 (plastic|steel in)"}
+    - {entity: express-underground-belt, count: 16}
+    - {entity: medium-electric-pole, count: 209}
+    - {entity: small-lamp, count: 32}
+    - {entity: display-panel, count: 17}
+    - {entity: roboport, count: 9, role: "cell corners, for alignment"}
+  ratios: |
+    recipe: 2 steel + 20 copper + 5 plastic -> 1 LDS in 15 s; AM3 speed 1.25 -> 1/12 LDS/s per machine.
+    15/s needs 180; 184 built (15.3/s). Per machine: 1.67 copper/s (fast ~2.3), 0.42 plastic + 0.17 steel
+    (long-handed ~1.2), 0.083 out.
+    Per row of 23: copper 38.3/s (one blue belt). Per pair: plastic lane 19.2/s, steel lane 7.7/s.
+    Output: each collector 7.67/s onto one yellow lane (7.5) -> the yellow belt is the cap.
+  bottleneck: "output yellow belt (15/s)"
+  validators: {collisions: pass, power: "pass (209 poles, one network incl. a bridge pole on the grid line)",
+               inserters: "pass (copper inserters on a copper belt, long-handed on a belt fed by both plastic and steel, out inserters trace to the output)",
+               belts: "10 curves, 9 sideloads (4 plastic|steel merges, 4 collector joins, output), 8 underground pairs",
+               grid: "2x2 cells, no grid collision, grid link 1.6"}
+
+check_in_game:
+  - "don't rotate it"
+  - the output sits on the horizontal grid line at the left edge (x=4 of the cell); connect from there
+log:
+  - "2026-11-18: built"

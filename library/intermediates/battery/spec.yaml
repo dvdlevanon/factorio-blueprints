@@ -1,0 +1,50 @@
+label: "Batteries"
+description: |
+  4 modules of 48 chemical plants (2 mirrored rows of 24), 2 cells side by side. Iron and copper are
+  each split in two; two mixed trunks (iron lane | copper lane) feed the top two and bottom two modules
+  through splitters. Each module's output belt gets row A on the south lane, row B on the north lane;
+  two collectors on the left sideload into the output belt, one lane each. One acid network. A 2-column
+  gap in the plant rows clears the grid pole between the cells. Includes the 6 corner roboports.
+icons:
+  - {type: item, name: battery}
+
+status: built
+
+request:
+  product: battery
+  rate: "1 full blue belt (David chose it over 30/s or 15/s)"
+  footprint: "about 3 cells (estimated); built in 2"
+  constraint_overrides: []
+
+result:
+  footprint: {cells: "2x1 (side by side)", tiles: "87x45 + 6 corner roboports", placement: "not rotation-safe"}
+  inputs:      # all from the right, middle
+    - {item: iron-plate, belts: "1 full blue belt (45/s), row 20 of the block"}
+    - {item: copper-plate, belts: "1 full blue belt (45/s), row 22 of the block"}
+    - {fluid: sulfuric-acid, rate: "900/s (960 max), inlet bottom right"}
+  outputs:
+    - {item: battery, belts: "1 full blue (45/s), left, middle, both lanes"}
+  machines:
+    - {entity: chemical-plant, recipe: battery, count: 192}
+    - {entity: fast-inserter, count: 192}
+    - {entity: long-handed-inserter, count: 192}
+    - {entity: express-splitter, count: 4}
+    - {entity: express-underground-belt, count: 4}
+    - {entity: medium-electric-pole, count: 112}
+    - {entity: small-lamp, count: 24}
+    - {entity: display-panel, count: 4}
+    - {entity: roboport, count: 6, role: "cell corners, for alignment"}
+  ratios: |
+    recipe: 20 acid + 1 iron + 1 copper -> 1 battery in 4 s -> 0.25/s per plant. 45/s needs 180; 192 built (48/s).
+    Each trunk carries iron and copper one lane each, 22.5/s: all 4 trunk lanes exactly full at 45/s.
+    Per plant: 0.25 iron + 0.25 copper in, 0.25 out, 5 acid/s.
+  bottleneck: "trunk lanes (exactly full) = output belt"
+  validators: {collisions: pass, power: "pass (112 poles)", inserters: "pass (in inserters pick a belt fed by both iron and copper)",
+               belts: "14 curves, 5 sideloads (2 trunk starts, 2 collector joins, output merge), 2 underground pairs (copper under the iron column)",
+               fluids: "1 network, every plant on both ports", grid: "2x1 cells, no grid collision (gap at the pole between the cells), grid link 2.9"}
+
+check_in_game:
+  - "don't rotate it"
+  - acid reaches the far left plants (one inlet, pipe rows 74 long)
+log:
+  - "2026-11-18: built"

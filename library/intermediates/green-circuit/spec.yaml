@@ -1,0 +1,54 @@
+label: "Green Circuit"
+description: |
+  Cable assemblers insert directly into circuit assemblers in 3:2 units (C G C G C). 6 rows of 3 units
+  in 3 mirrored pairs; each row has a mixed input belt (copper lane + iron lane), each pair shares an
+  output belt; the middle pair's output is split between the two output belts. 2 cells side by side, includes the 6 corner roboports. Don't rotate (2-cell block).
+icons:
+  - {type: item, name: electronic-circuit}
+
+status: built
+
+request:
+  product: electronic-circuit
+  rate: "2 blue belts (2026-11-18: same space, was 1)"
+  footprint: {cells_max: 2, prefer: 1}
+  constraint_overrides:
+    - 2 cells (1 cell can't hold the 4 rows + input forming), not rotation-safe
+
+result:
+  footprint: {cells: "2x1 (side by side)", tiles: "84x43 + 6 corner roboports",
+              note: "2-column gap between units 2 and 3 clears the grid big pole at (53,23)"}
+  inputs:     # all from the right
+    - {item: iron-plate, belts: "2 full blue (90/s), rows 18 and 33"}
+    - {item: copper-plate, belts: "3 full blue (135/s), one per pair of rows"}
+  outputs:
+    - {item: electronic-circuit, belts: "2 full blue (90/s), left, both lanes each"}
+  machines:
+    - {entity: assembling-machine-3, recipe: copper-cable, count: 54}
+    - {entity: assembling-machine-3, recipe: electronic-circuit, count: 36}
+    - {entity: bulk-inserter, count: 234}
+    - {entity: express-splitter, count: 10}
+    - {entity: express-underground-belt, count: 8}
+    - {entity: medium-electric-pole, count: 72}
+    - {entity: small-lamp, count: 12}
+    - {entity: display-panel, count: 7}
+    - {entity: roboport, count: 6, role: "cell corners, for alignment"}
+  ratios: |
+    circuit: 1 iron + 3 cable, 0.5 s; cable: 1 copper -> 2 cable, 0.5 s; assembler 3 speed 1.25.
+    Unit C G C G C = 5 circuits/s (7.5 copper, 5 iron). 90/s needs 18 units: 6 rows of 3.
+    Copper sits on one lane per row: 22.5/s = exactly 3 units. NO SLACK: every copper lane, every iron
+    belt and both output belts are exactly full; any loss shows up as a slightly short output.
+    Bulk inserters (hand 2): end C -> G 2 bulk (5/s), middle C -> each G 1 bulk, belt <-> machine 1 bulk (2.5/s).
+  bottleneck: "everything exactly full (copper lanes = iron belts = outputs)"
+  validators: {collisions: pass, power: "pass (72 poles, one network)",
+               inserters: "pass (copper to cable asms, iron to circuit asms, circuits to an output)",
+               belts: "6 sideloads (row formers only), 28 intended curves, 4 underground pairs, ends = 2 outputs + 6 row ends + 2 merger outputs",
+               grid: "inside 2 cells, no grid collision, grid link 4.5"}
+
+check_in_game:
+  - bulk inserters carry 2 (bulk-inserter research) - if you have capacity research it only gets better
+  - row formers fill copper on one lane, iron on the other
+  - the two merger splitters (one output each) keep lanes: each output belt full on both lanes
+log:
+  - "2026-11-18: built, all validators pass"
+  - "2026-11-18: 2 belts in the same 2 cells: 3 pairs of rows, 18 units, 3 copper + 2 iron in"
